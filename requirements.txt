@@ -34,3 +34,4 @@ ruff
 PyMuPDF==2.1
 langchain-text-splitters>=0.3,<2.0
 pydantic~=2.14.3
+ollama==0.6.3
