@@ -30,3 +30,6 @@ httpx
 
 # Code quality
 ruff
+
+PyMuPDF==2.1
+langchain-text-splitters>=0.3,<2.0
