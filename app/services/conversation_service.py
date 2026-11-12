@@ -1,0 +1,1 @@
+# Manages chat history.
