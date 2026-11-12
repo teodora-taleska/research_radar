@@ -7,7 +7,7 @@ their original page numbers.
 
 from dataclasses import dataclass
 
-import fitz
+import pymupdf
 
 
 @dataclass(frozen=True)
@@ -46,7 +46,7 @@ def extract_pdf(pdf_bytes: bytes) -> ExtractedPDF:
         raise ValueError("The uploaded PDF is empty.")
 
     try:
-        with fitz.open(stream=pdf_bytes, filetype="pdf") as document:
+        with pymupdf.open(stream=pdf_bytes, filetype="pdf") as document:
             if document.is_encrypted:
                 raise ValueError("Encrypted PDFs are not supported.")
 
@@ -60,7 +60,7 @@ def extract_pdf(pdf_bytes: bytes) -> ExtractedPDF:
 
             page_count = len(document)
 
-    except (fitz.FileDataError, RuntimeError) as exc:
+    except (pymupdf.FileDataError, RuntimeError) as exc:
         raise ValueError("Could not read the uploaded PDF.") from exc
 
     if not any(page.text.strip() for page in pages):

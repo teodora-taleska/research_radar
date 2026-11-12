@@ -1,13 +1,13 @@
 """Shared pytest fixtures for Research Radar."""
 
-import fitz
+import pymupdf
 import pytest
 
 
 @pytest.fixture
 def sample_pdf_bytes():
     """Create a small PDF in memory for testing."""
-    document = fitz.open()
+    document = pymupdf.open()
 
     page = document.new_page()
     page.insert_text(
