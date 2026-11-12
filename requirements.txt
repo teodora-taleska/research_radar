@@ -1,0 +1,32 @@
+# API
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic-settings
+
+# PDF processing
+pymupdf
+
+# RAG and embeddings
+langchain
+langchain-text-splitters
+langchain-openai
+langchain-chroma
+chromadb
+
+# Database
+sqlalchemy
+psycopg[binary]
+alembic
+
+# Frontend
+streamlit
+requests
+
+# Testing
+pytest
+pytest-cov
+httpx
+
+# Code quality
+ruff
