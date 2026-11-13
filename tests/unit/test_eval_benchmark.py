@@ -64,6 +64,14 @@ def test_rejects_invalid_questions(tmp_path, papers, mutation, message):
         load_benchmark(_write(tmp_path, [{**GOOD, **mutation}]), papers)
 
 
+def test_ignores_optional_expected_answer(tmp_path, papers):
+    with_answer = {**GOOD, "expected_answer": "The WMT 2014 dataset."}
+
+    benchmark = load_benchmark(_write(tmp_path, [with_answer]), papers)
+
+    assert benchmark.questions[0].id == "q1"
+
+
 def test_rejects_unanswerable_question_with_pages(tmp_path, papers):
     bad = {**GOOD, "answerable": False}
 

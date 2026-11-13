@@ -19,6 +19,9 @@ answerable question lists the paper pages that contain its answer:
       ]
     }
 
+Answerable questions may also carry an optional "expected_answer" string,
+which is ignored here.
+
 Page numbers are one-based PDF page indexes (the page counter of a PDF
 viewer), not the page numbers printed on the paper.
 """

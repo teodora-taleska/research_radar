@@ -1,6 +1,10 @@
 # Retrieval benchmark
 
-This folder holds the benchmark used to measure retrieval quality.
+This folder holds the benchmark used to measure retrieval quality. The
+current benchmark has 3 papers (listed in [papers.md](papers.md)) and 26
+questions: 22 answerable and 4 unanswerable. Every labelled page was checked
+against the extracted page text, and pages repeating the same fact were
+labelled too. The rest of this file explains how to build or extend one.
 
 ```
 evaluation/datasets/
@@ -66,6 +70,9 @@ Create `questions.json`:
   ]
 }
 ```
+
+An answerable question may also have an optional `"expected_answer"` text.
+The retrieval metrics ignore it; it is there to check generated answers later.
 
 Rules checked automatically when you run the evaluation:
 
