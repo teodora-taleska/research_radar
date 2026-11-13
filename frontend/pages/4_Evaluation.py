@@ -444,7 +444,7 @@ def render_llm() -> None:
 
 st.title("Evaluation")
 st.caption(
-    f"Reports are read from {results_dir()}. They are produced by the "
+    f"Reports are produced by the "
     "evaluation scripts, not by this page."
 )
 
