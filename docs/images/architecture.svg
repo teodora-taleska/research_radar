@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 830" width="1200" height="830" role="img" aria-labelledby="t d" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+<title id="t">Research Radar architecture</title>
+<desc id="d">Layers of the system: Streamlit frontend, FastAPI API, services, components, ChromaDB and SQLite storage, and Ollama running on the host computer.</desc>
+<rect width="1200" height="830" rx="14" fill="#fbfbf9"/>
+<text x="50" y="42" font-size="22" font-weight="bold" fill="#1f2328" text-anchor="start">Research Radar: system architecture</text>
+<text x="50" y="64" font-size="13" font-weight="normal" fill="#57606a" text-anchor="start">Everything runs locally. Run natively or with Docker Compose; Ollama stays on the host.</text>
+<rect x="50" y="90" width="1100" height="96" rx="10" fill="#eaf2fc" stroke="#2a78d6" stroke-width="1.6"/>
+<text x="70" y="114" font-size="14" font-weight="bold" fill="#1f2328" text-anchor="start">Frontend: Streamlit (port 8501)</text>
+<rect x="70" y="126" width="330" height="48" rx="10" fill="#ffffff" stroke="#2a78d6" stroke-width="1.6"/>
+<text x="82" y="148" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start"></text>
+<text x="82" y="155" font-size="13" font-weight="normal" fill="#1f2328" text-anchor="start">Research Assistant: upload, chat, citations</text>
+<rect x="415" y="126" width="360" height="48" rx="10" fill="#ffffff" stroke="#2a78d6" stroke-width="1.6"/>
+<text x="427" y="148" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start"></text>
+<text x="427" y="155" font-size="13" font-weight="normal" fill="#1f2328" text-anchor="start">Evaluation: metrics, failures, model comparison</text>
+<rect x="790" y="126" width="340" height="48" rx="10" fill="#ffffff" stroke="#6e7781" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="802" y="155" font-size="13" font-weight="normal" fill="#57606a" text-anchor="start">Pages 2 and 3: version 2 (planned)</text>
+<line x1="600" y1="186" x2="600" y2="209" stroke="#57606a" stroke-width="2"/>
+<polygon points="595,208 605,208 600,216" fill="#57606a"/>
+<text x="614" y="207" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">REST over HTTP</text>
+<rect x="50" y="216" width="1100" height="96" rx="10" fill="#fdeee7" stroke="#d9531f" stroke-width="1.6"/>
+<text x="70" y="240" font-size="14" font-weight="bold" fill="#1f2328" text-anchor="start">API: FastAPI (port 8000)</text>
+<rect x="70" y="252" width="220" height="44" rx="10" fill="#ffffff" stroke="#d9531f" stroke-width="1.6"/>
+<text x="82" y="279" font-size="13" font-weight="normal" fill="#1f2328" text-anchor="start">POST /documents/upload</text>
+<rect x="305" y="252" width="220" height="44" rx="10" fill="#ffffff" stroke="#d9531f" stroke-width="1.6"/>
+<text x="317" y="279" font-size="13" font-weight="normal" fill="#1f2328" text-anchor="start">GET, DELETE /documents</text>
+<rect x="540" y="252" width="200" height="44" rx="10" fill="#ffffff" stroke="#d9531f" stroke-width="1.6"/>
+<text x="552" y="279" font-size="13" font-weight="normal" fill="#1f2328" text-anchor="start">POST /research/ask</text>
+<rect x="755" y="252" width="150" height="44" rx="10" fill="#ffffff" stroke="#d9531f" stroke-width="1.6"/>
+<text x="767" y="279" font-size="13" font-weight="normal" fill="#1f2328" text-anchor="start">GET /health</text>
+<line x1="262" y1="312" x2="262" y2="335" stroke="#57606a" stroke-width="2"/>
+<polygon points="257,334 267,334 262,342" fill="#57606a"/>
+<line x1="825" y1="312" x2="825" y2="335" stroke="#57606a" stroke-width="2"/>
+<polygon points="820,334 830,334 825,342" fill="#57606a"/>
+<rect x="50" y="342" width="425" height="74" rx="10" fill="#efedfb" stroke="#6250d6" stroke-width="1.6"/>
+<text x="62" y="364" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">DocumentService</text>
+<text x="62" y="384" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">index, list and delete documents</text>
+<rect x="500" y="342" width="650" height="74" rx="10" fill="#efedfb" stroke="#6250d6" stroke-width="1.6"/>
+<text x="512" y="364" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">ResearchService</text>
+<text x="512" y="384" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">retrieve passages, then generate a cited answer</text>
+<line x1="150" y1="416" x2="150" y2="439" stroke="#57606a" stroke-width="2"/>
+<polygon points="145,438 155,438 150,446" fill="#57606a"/>
+<line x1="375" y1="416" x2="375" y2="439" stroke="#57606a" stroke-width="2"/>
+<polygon points="370,438 380,438 375,446" fill="#57606a"/>
+<line x1="600" y1="416" x2="600" y2="439" stroke="#57606a" stroke-width="2"/>
+<polygon points="595,438 605,438 600,446" fill="#57606a"/>
+<line x1="825" y1="416" x2="825" y2="439" stroke="#57606a" stroke-width="2"/>
+<polygon points="820,438 830,438 825,446" fill="#57606a"/>
+<rect x="50" y="446" width="200" height="100" rx="10" fill="#ffffff" stroke="#2a78d6" stroke-width="1.6"/>
+<text x="62" y="468" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Ingestion</text>
+<text x="62" y="488" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">PyMuPDF text extraction</text>
+<text x="62" y="505" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">text cleaning</text>
+<text x="62" y="522" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">page-aware chunks</text>
+<rect x="275" y="446" width="200" height="100" rx="10" fill="#ffffff" stroke="#2a78d6" stroke-width="1.6"/>
+<text x="287" y="468" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Embedding provider</text>
+<text x="287" y="488" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">EmbeddingGemma (Ollama)</text>
+<text x="287" y="505" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">768 dimensions</text>
+<text x="287" y="522" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">batches of 32 texts</text>
+<rect x="500" y="446" width="200" height="100" rx="10" fill="#ffffff" stroke="#2a78d6" stroke-width="1.6"/>
+<text x="512" y="468" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Retriever</text>
+<text x="512" y="488" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">embeds the question</text>
+<text x="512" y="505" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">top-K similar passages</text>
+<text x="512" y="522" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">cosine distance</text>
+<rect x="725" y="446" width="200" height="100" rx="10" fill="#ffffff" stroke="#2a78d6" stroke-width="1.6"/>
+<text x="737" y="468" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Answer generator</text>
+<text x="737" y="488" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">numbered sources, [n] cites</text>
+<text x="737" y="505" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">citation verification</text>
+<text x="737" y="522" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">insufficient-evidence reply</text>
+<rect x="950" y="446" width="200" height="100" rx="10" fill="#ffffff" stroke="#2a78d6" stroke-width="1.6"/>
+<text x="962" y="468" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">LLM provider</text>
+<text x="962" y="488" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">qwen3:4b-instruct (Ollama)</text>
+<text x="962" y="505" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">low temperature (0.1)</text>
+<text x="962" y="522" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">strips reasoning text</text>
+<line x1="375" y1="546" x2="375" y2="579" stroke="#57606a" stroke-width="2"/>
+<polygon points="370,578 380,578 375,586" fill="#57606a"/>
+<line x1="600" y1="546" x2="600" y2="579" stroke="#57606a" stroke-width="2"/>
+<polygon points="595,578 605,578 600,586" fill="#57606a"/>
+<line x1="1050" y1="546" x2="1050" y2="579" stroke="#57606a" stroke-width="2"/>
+<polygon points="1045,578 1055,578 1050,586" fill="#57606a"/>
+<text x="615" y="572" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">read, write, call</text>
+<rect x="50" y="586" width="250" height="100" rx="10" fill="#e6f5ee" stroke="#0f8a5f" stroke-width="1.6"/>
+<text x="62" y="608" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">SQLite</text>
+<text x="62" y="628" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">records written by the</text>
+<text x="62" y="645" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">DocumentService: name, pages,</text>
+<text x="62" y="662" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">chunks, status, upload time</text>
+<rect x="320" y="586" width="420" height="100" rx="10" fill="#e6f5ee" stroke="#0f8a5f" stroke-width="1.6"/>
+<text x="332" y="608" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">ChromaDB (persistent)</text>
+<text x="332" y="628" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">chunk text + embedding + metadata:</text>
+<text x="332" y="645" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">document id, file name, page number,</text>
+<text x="332" y="662" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">chunk index</text>
+<rect x="760" y="586" width="390" height="100" rx="10" fill="#f1f2f4" stroke="#6e7781" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="772" y="608" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Ollama (on the host computer)</text>
+<text x="772" y="628" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">EmbeddingGemma + qwen3:4b-instruct</text>
+<text x="772" y="645" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">local models, no API keys, no cloud</text>
+<text x="772" y="662" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">not inside Docker</text>
+<rect x="50" y="716" width="1100" height="84" rx="10" fill="#ffffff" stroke="#0f8a5f" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="70" y="742" font-size="14" font-weight="bold" fill="#1f2328" text-anchor="start">Evaluation (offline, from the command line)</text>
+<text x="70" y="766" font-size="13" font-weight="normal" fill="#57606a" text-anchor="start">benchmark (3 papers, 26 questions)  -&gt;  run_evaluation / llm_comparison  -&gt;  evaluation/results/*.json  -&gt;  Evaluation page</text>
+<text x="70" y="786" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">Reports are plain JSON files that the Evaluation page reads; scoring data is saved next to them.</text>
+</svg>

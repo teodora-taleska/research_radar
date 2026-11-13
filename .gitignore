@@ -219,3 +219,9 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 /.idea
+
+# Local vector database and uploads
+data/
+
+# Retrieval benchmark papers (not redistributed)
+evaluation/datasets/papers/
