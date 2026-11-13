@@ -1,0 +1,21 @@
+.git
+.github
+.claude
+.idea
+.vscode
+.venv
+**/__pycache__
+**/*.pyc
+.pytest_cache
+.ruff_cache
+.env
+
+# Local data and large inputs stay out of the image.
+data
+evaluation/datasets/papers
+evaluation/results
+
+# Not needed to run the application.
+tests
+docs
+reports

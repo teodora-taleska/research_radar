@@ -1,5 +1,6 @@
 # Remove unnecessary whitespace, broken characters and extraction artifacts
-# Extracted PDF text if often messy. We want to normalize it without destroying meaningful paragraph boundaries.
+# Extracted PDF text is often messy. We want to normalize it without
+# destroying meaningful paragraph boundaries.
 
 """Text normalization utilities for extracted PDF content."""
 

@@ -1,0 +1,57 @@
+# Research Radar: API and Streamlit frontend.
+# Ollama is NOT part of this file. It runs on the host computer, where the
+# models are already downloaded and the GPU is available.
+
+x-app: &app
+  build: .
+  image: research-radar
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+  volumes:
+    - ./evaluation:/app/evaluation
+
+services:
+  api:
+    <<: *app
+    ports:
+      - "${API_PORT:-8000}:8000"
+    environment:
+      OLLAMA_HOST: ${OLLAMA_HOST:-http://host.docker.internal:11434}
+      OLLAMA_EMBEDDING_MODEL: ${OLLAMA_EMBEDDING_MODEL:-embeddinggemma}
+      OLLAMA_LLM_MODEL: ${OLLAMA_LLM_MODEL:-qwen3:4b-instruct}
+    volumes:
+      - research_radar_data:/app/data
+      - ./evaluation:/app/evaluation
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 30s
+    restart: unless-stopped
+
+  frontend:
+    <<: *app
+    command:
+      - streamlit
+      - run
+      - frontend/Home.py
+      - --server.port=8501
+      - --server.address=0.0.0.0
+      - --server.headless=true
+      - --browser.gatherUsageStats=false
+    ports:
+      - "${FRONTEND_PORT:-8501}:8501"
+    environment:
+      RESEARCH_RADAR_API_URL: http://api:8000
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  research_radar_data:

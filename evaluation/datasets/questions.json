@@ -1,0 +1,156 @@
+{
+  "questions": [
+    {
+      "id": "q01",
+      "question": "How many patients and how many centers does the updated REFINE SPECT registry include?",
+      "relevant": [{"paper": "jnumed.124.268292.pdf", "pages": [1, 4, 6]}],
+      "expected_answer": "45,252 patients from 13 centers."
+    },
+    {
+      "id": "q02",
+      "question": "Which events were counted as major adverse cardiovascular events (MACEs) in the registry?",
+      "relevant": [{"paper": "jnumed.124.268292.pdf", "pages": [1, 2, 5]}],
+      "expected_answer": "All-cause mortality, nonfatal myocardial infarction, unstable angina, and late coronary revascularization."
+    },
+    {
+      "id": "q03",
+      "question": "What degree of coronary stenosis was considered significant or obstructive on invasive angiography?",
+      "relevant": [{"paper": "jnumed.124.268292.pdf", "pages": [2, 3, 5]}],
+      "expected_answer": "At least 70% in the LAD, left circumflex or right coronary artery, or at least 50% in the left main coronary artery."
+    },
+    {
+      "id": "q04",
+      "question": "How was coronary artery calcium scored from the CT attenuation scans, and how well did the deep learning scores agree with expert scores?",
+      "relevant": [{"paper": "jnumed.124.268292.pdf", "pages": [3, 4]}],
+      "expected_answer": "Experts annotated CAC, and a deep learning model derived scores automatically; agreement with expert scores was good (Cohen kappa 0.80)."
+    },
+    {
+      "id": "q05",
+      "question": "How much higher was the risk of MACEs for patients with a deep learning coronary calcium score above 400?",
+      "relevant": [{"paper": "jnumed.124.268292.pdf", "pages": [1, 5]}],
+      "expected_answer": "Unadjusted hazard ratio of 5.17 (95% CI 4.41-6.05) compared with a CAC of 0."
+    },
+    {
+      "id": "q06",
+      "question": "What limitations does the REFINE SPECT registry have?",
+      "relevant": [{"paper": "jnumed.124.268292.pdf", "pages": [6]}],
+      "expected_answer": "Least-common-denominator data; visual stenosis assessment overestimates functionally significant disease versus fractional flow reserve; all-cause death used; heterogeneity between centers and interobserver variability."
+    },
+    {
+      "id": "q07",
+      "question": "How long did batch processing of each patient case take?",
+      "relevant": [{"paper": "jnumed.124.268292.pdf", "pages": [4]}],
+      "expected_answer": "Approximately 2.1 seconds per complete patient case."
+    },
+    {
+      "id": "q08",
+      "question": "How accurate was the AI system compared with cardiologists working with and without AI guidance?",
+      "relevant": [{"paper": "s41598-024-64445-2.pdf", "pages": [1, 4]}],
+      "expected_answer": "AI 88%, cardiologists with AI guidance 80%, cardiologists alone 65%."
+    },
+    {
+      "id": "q09",
+      "question": "How did noise and artifacts in the images affect the performance of the diagnosis model?",
+      "relevant": [{"paper": "s41598-024-64445-2.pdf", "pages": [3]}],
+      "expected_answer": "14.2% of images contained artifacts; performance was much lower on them (AUC 0.74, AUPRC 0.78) than on non-artifact images (AUC 0.93, AUPRC 0.90)."
+    },
+    {
+      "id": "q10",
+      "question": "Which image axis gave the best performance when a model was trained on a single axis?",
+      "relevant": [{"paper": "s41598-024-64445-2.pdf", "pages": [3, 4]}],
+      "expected_answer": "The short axis (AUC 0.88, AUPRC 0.83)."
+    },
+    {
+      "id": "q11",
+      "question": "What neural network architecture was used, and how were the three image axes combined with the patient's age and sex?",
+      "relevant": [{"paper": "s41598-024-64445-2.pdf", "pages": [2, 7, 8]}],
+      "expected_answer": "A 3D CNN based on ResNet-34 with three branches (one per axis) whose outputs are concatenated with age and sex before dense layers."
+    },
+    {
+      "id": "q12",
+      "question": "How were the data divided into training, validation and test sets?",
+      "relevant": [{"paper": "s41598-024-64445-2.pdf", "pages": [7]}],
+      "expected_answer": "10% for testing and 10% of the rest for validation: 4356 training, 542 validation and 545 test cases."
+    },
+    {
+      "id": "q13",
+      "question": "Which data augmentation techniques were applied to the SPECT images?",
+      "relevant": [{"paper": "s41598-024-64445-2.pdf", "pages": [8]}],
+      "expected_answer": "Slight rotation (up to five degrees), brightness change, zooming and shifting; classes were augmented to 12,000 images each."
+    },
+    {
+      "id": "q14",
+      "question": "What hardware and software environment was used to train the deep learning model?",
+      "relevant": [{"paper": "s41598-024-64445-2.pdf", "pages": [9]}],
+      "expected_answer": "A server with two Quadro RTX8000 GPUs, using TensorFlow 2.4.0 and Python 3.7.7 in Docker."
+    },
+    {
+      "id": "q15",
+      "question": "Why is it unclear whether the SPECT deep learning diagnosis system would work at other hospitals?",
+      "relevant": [{"paper": "s41598-024-64445-2.pdf", "pages": [6]}],
+      "expected_answer": "The dataset was collected from a single center (Keio University)."
+    },
+    {
+      "id": "q16",
+      "question": "How many participants took part in the simultaneous EEG-fMRI evaluation, and how many were analysed for each task?",
+      "relevant": [{"paper": "fnimg-01-968363.pdf", "pages": [5]}],
+      "expected_answer": "Sixteen participants; 12 analysed for resting-state and visual evoked potentials and 13 for finger tapping."
+    },
+    {
+      "id": "q17",
+      "question": "What are the main types of MR artifacts that contaminate EEG recorded inside the scanner?",
+      "relevant": [{"paper": "fnimg-01-968363.pdf", "pages": [2, 3, 4]}],
+      "expected_answer": "Imaging (gradient) artifacts, ballistocardiogram (BCG) artifacts, and vibration artifacts such as those from the helium pump."
+    },
+    {
+      "id": "q18",
+      "question": "How does average artifact subtraction work, and what assumptions does it make?",
+      "relevant": [{"paper": "fnimg-01-968363.pdf", "pages": [3, 15]}],
+      "expected_answer": "It averages the EEG over several periods to build an artifact template and subtracts it; it assumes the neural signal is uncorrelated across averaged epochs and the artifact is stationary."
+    },
+    {
+      "id": "q19",
+      "question": "What is the carbon-wire loop method and how many loops does it use?",
+      "relevant": [{"paper": "fnimg-01-968363.pdf", "pages": [1, 2, 4, 5, 6]}],
+      "expected_answer": "A reference-signal method using six carbon-wire loops (four on the head, two on cables), isolated from the scalp; their signals and time-shifted copies are regressed out of the EEG."
+    },
+    {
+      "id": "q20",
+      "question": "Which artifact reduction method best recovered alpha and beta band changes during finger tapping?",
+      "relevant": [{"paper": "fnimg-01-968363.pdf", "pages": [1, 10, 15, 18]}],
+      "expected_answer": "The carbon-wire loop (CWL) method; no other method substantially improved the alpha or beta results."
+    },
+    {
+      "id": "q21",
+      "question": "What do the authors recommend for EEG-fMRI studies where participants must make voluntary movements?",
+      "relevant": [{"paper": "fnimg-01-968363.pdf", "pages": [17, 18]}],
+      "expected_answer": "Use a reference-signal-based artifact correction such as a carbon-wire loop system."
+    },
+    {
+      "id": "q22",
+      "question": "Which probabilistic programming language was used to estimate the statistical models?",
+      "relevant": [{"paper": "fnimg-01-968363.pdf", "pages": [9]}],
+      "expected_answer": "Stan."
+    },
+    {
+      "id": "q23",
+      "question": "What is the recommended dose of beta blockers for patients with coronary artery disease?",
+      "answerable": false
+    },
+    {
+      "id": "q24",
+      "question": "Which deep learning model did the EEG-fMRI study use to remove MR artifacts?",
+      "answerable": false
+    },
+    {
+      "id": "q25",
+      "question": "What was the 10-year all-cause mortality rate reported in the REFINE SPECT registry?",
+      "answerable": false
+    },
+    {
+      "id": "q26",
+      "question": "Who won the 2018 football World Cup?",
+      "answerable": false
+    }
+  ]
+}

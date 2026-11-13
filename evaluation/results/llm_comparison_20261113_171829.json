@@ -1,0 +1,1153 @@
+{
+  "created_at": "2026-11-13T17:18:29",
+  "config": {
+    "models": [
+      "qwen3:4b",
+      "qwen3:4b-instruct"
+    ],
+    "embedding_model": "embeddinggemma",
+    "chunk_size": 1200,
+    "chunk_overlap": 200,
+    "papers": [
+      "fnimg-01-968363.pdf",
+      "jnumed.124.268292.pdf",
+      "s41598-024-64445-2.pdf"
+    ],
+    "indexed_chunks": 203,
+    "questions_answerable": 22,
+    "questions_unanswerable": 4
+  },
+  "top_k": 5,
+  "retrieval_top_distance": {
+    "answerable": {
+      "mean": 0.4293916794386777,
+      "median": 0.4186573028564453,
+      "p95": 0.6042855978012085,
+      "min": 0.27994537353515625,
+      "max": 0.6592532396316528
+    },
+    "unanswerable": {
+      "mean": 0.5223780572414398,
+      "median": 0.47414642572402954,
+      "p95": 0.8140513896942139,
+      "min": 0.32716798782348633,
+      "max": 0.8140513896942139
+    }
+  },
+  "models": {
+    "qwen3:4b": {
+      "summary": {
+        "questions_answerable": 22,
+        "questions_unanswerable": 4,
+        "errors": 0,
+        "answer_rate": 0.9545454545454546,
+        "correct_refusal_rate": 1.0,
+        "citation_hit_rate": 1.0,
+        "citation_precision": 0.9393939393939394,
+        "latency_s": {
+          "mean": 27.88107187307691,
+          "median": 22.15726369999993,
+          "p95": 81.59482200000002,
+          "min": 5.591355199999725,
+          "max": 87.53728890000002
+        }
+      },
+      "answers": [
+        {
+          "id": "q01",
+          "question": "How many patients and how many centers does the updated REFINE SPECT registry include?",
+          "answerable": true,
+          "expected_answer": "45,252 patients from 13 centers.",
+          "answer": "The updated REFINE SPECT registry includes 13 centers and 45,252 patients [3][4].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 3,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 4,
+              "relevant": true
+            },
+            {
+              "reference": 4,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 6,
+              "relevant": true
+            }
+          ],
+          "latency_s": 40.62589449999996,
+          "top_distance": 0.27994537353515625,
+          "error": null
+        },
+        {
+          "id": "q02",
+          "question": "Which events were counted as major adverse cardiovascular events (MACEs) in the registry?",
+          "answerable": true,
+          "expected_answer": "All-cause mortality, nonfatal myocardial infarction, unstable angina, and late coronary revascularization.",
+          "answer": "all-cause mortality, nonfatal myocardial infarction, unstable angina, or late coronary revascularization [1]",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 1,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 2,
+              "relevant": true
+            }
+          ],
+          "latency_s": 33.08456179999985,
+          "top_distance": 0.3942217230796814,
+          "error": null
+        },
+        {
+          "id": "q03",
+          "question": "What degree of coronary stenosis was considered significant or obstructive on invasive angiography?",
+          "answerable": true,
+          "expected_answer": "At least 70% in the LAD, left circumflex or right coronary artery, or at least 50% in the left main coronary artery.",
+          "answer": "At least 70% in the left anterior descending artery, left circumflex artery, or right coronary artery, or at least 50% in the left main coronary artery [1].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 1,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 2,
+              "relevant": true
+            }
+          ],
+          "latency_s": 61.47682590000022,
+          "top_distance": 0.3818177580833435,
+          "error": null
+        },
+        {
+          "id": "q04",
+          "question": "How was coronary artery calcium scored from the CT attenuation scans, and how well did the deep learning scores agree with expert scores?",
+          "answerable": true,
+          "expected_answer": "Experts annotated CAC, and a deep learning model derived scores automatically; agreement with expert scores was good (Cohen kappa 0.80).",
+          "answer": "Coronary artery calcium was scored using a deep learning model that was developed in a subset of 500 patients from one site and integrates slice thickness into CAC calculation to allow for differences between studies [3]. The deep learning CAC scores agreed well with expert CAC scores in external populations (which had different acquisition parameters), with a Cohen k of 0.80 [3].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 3,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 4,
+              "relevant": true
+            }
+          ],
+          "latency_s": 16.22648909999998,
+          "top_distance": 0.341513991355896,
+          "error": null
+        },
+        {
+          "id": "q05",
+          "question": "How much higher was the risk of MACEs for patients with a deep learning coronary calcium score above 400?",
+          "answerable": true,
+          "expected_answer": "Unadjusted hazard ratio of 5.17 (95% CI 4.41-6.05) compared with a CAC of 0.",
+          "answer": "5.17 times higher than patients with a deep learning CAC of 0 [3]",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 3,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 5,
+              "relevant": true
+            }
+          ],
+          "latency_s": 38.19647750000013,
+          "top_distance": 0.3827158212661743,
+          "error": null
+        },
+        {
+          "id": "q06",
+          "question": "What limitations does the REFINE SPECT registry have?",
+          "answerable": true,
+          "expected_answer": "Least-common-denominator data; visual stenosis assessment overestimates functionally significant disease versus fractional flow reserve; all-cause death used; heterogeneity between centers and interobserver variability.",
+          "answer": "The REFINE SPECT registry has limitations including: it did not include contemporary patient populations [1]; it was too small to assess certain subgroups such as patients with peripheral artery disease [2]; coronary stenosis assessment by visual methods overestimates functionally significant disease compared with fractional flow reserve [3][5]; there is potential heterogeneity between centers and interobserver/intercenter variability in visual SPECT interpretation [3]; the definition of cardiac death can be difficult, particularly among elderly patients with multiple diseases [3][5]; and by design it aimed for the least common denominator of available data [5].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 1,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 2,
+              "relevant": false
+            },
+            {
+              "reference": 2,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 1,
+              "relevant": false
+            },
+            {
+              "reference": 3,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 6,
+              "relevant": true
+            },
+            {
+              "reference": 5,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 6,
+              "relevant": true
+            }
+          ],
+          "latency_s": 28.247623499999918,
+          "top_distance": 0.36691415309906006,
+          "error": null
+        },
+        {
+          "id": "q07",
+          "question": "How long did batch processing of each patient case take?",
+          "answerable": true,
+          "expected_answer": "Approximately 2.1 seconds per complete patient case.",
+          "answer": "The processing time in batch mode was approximately 2.1 s for each complete patient case [1].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 1,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 4,
+              "relevant": true
+            }
+          ],
+          "latency_s": 5.591355199999725,
+          "top_distance": 0.6592532396316528,
+          "error": null
+        },
+        {
+          "id": "q08",
+          "question": "How accurate was the AI system compared with cardiologists working with and without AI guidance?",
+          "answerable": true,
+          "expected_answer": "AI 88%, cardiologists with AI guidance 80%, cardiologists alone 65%.",
+          "answer": "The AI system had an accuracy of 88%, cardiologists with AI guidance had an accuracy of 80%, and cardiologists without AI guidance had an accuracy of 65% [2][4].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 2,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 4,
+              "relevant": true
+            },
+            {
+              "reference": 4,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 1,
+              "relevant": true
+            }
+          ],
+          "latency_s": 28.871780099999796,
+          "top_distance": 0.3999338150024414,
+          "error": null
+        },
+        {
+          "id": "q09",
+          "question": "How did noise and artifacts in the images affect the performance of the diagnosis model?",
+          "answerable": true,
+          "expected_answer": "14.2% of images contained artifacts; performance was much lower on them (AUC 0.74, AUPRC 0.78) than on non-artifact images (AUC 0.93, AUPRC 0.90).",
+          "answer": "Noise and artifacts in the images significantly reduced the model's diagnostic performance, with artifact images having a lower AUC (0.74) and AUPRC (0.78) compared to non-artifact images (AUC: 0.93, AUPRC: 0.90) [3][4]. Approximately 14.2% of images included noises or artifacts in the dataset [4].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 3,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 3,
+              "relevant": true
+            },
+            {
+              "reference": 4,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 3,
+              "relevant": true
+            }
+          ],
+          "latency_s": 23.630330100000265,
+          "top_distance": 0.4245460033416748,
+          "error": null
+        },
+        {
+          "id": "q10",
+          "question": "Which image axis gave the best performance when a model was trained on a single axis?",
+          "answerable": true,
+          "expected_answer": "The short axis (AUC 0.88, AUPRC 0.83).",
+          "answer": "The short-axis model gave the best performance when trained on a single axis [2][3].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 2,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 4,
+              "relevant": true
+            },
+            {
+              "reference": 3,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 3,
+              "relevant": true
+            }
+          ],
+          "latency_s": 32.48641480000015,
+          "top_distance": 0.5178907513618469,
+          "error": null
+        },
+        {
+          "id": "q11",
+          "question": "What neural network architecture was used, and how were the three image axes combined with the patient's age and sex?",
+          "answerable": true,
+          "expected_answer": "A 3D CNN based on ResNet-34 with three branches (one per axis) whose outputs are concatenated with age and sex before dense layers.",
+          "answer": "The neural network architecture used was a 3D-CNN based on a deep residual network that processes 4D data from three axes (horizontal long, vertical long, and short) as two-channel 3D data. The outputs from these branches were concatenated with a 256-hidden-units-layer of patient demographic data (including age and sex), followed by six dense layers (1024, 512, 256, 128, 64, and 1 unit) with L2 regularization (L2 = 0.01) on the first two dense layers, batch normalization after the first dense layer, and a sigmoid function in the final layer [1][3].\n\nThe three image axes were combined with patient's age and sex through a two-step training process: first training with a single axis without age and sex information, then transferring the top layers before the dense layers to a model with three branches including sex and gender information [1][3].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 1,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 8,
+              "relevant": true
+            },
+            {
+              "reference": 3,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 2,
+              "relevant": true
+            }
+          ],
+          "latency_s": 47.00484419999975,
+          "top_distance": 0.42597144842147827,
+          "error": null
+        },
+        {
+          "id": "q12",
+          "question": "How were the data divided into training, validation and test sets?",
+          "answerable": true,
+          "expected_answer": "10% for testing and 10% of the rest for validation: 4356 training, 542 validation and 545 test cases.",
+          "answer": "The data was divided by first randomly extracting 10% of the available data for the test dataset, then using 10% of the remaining data for validation, with the rest utilized for training. The training dataset included 4356 cases (healthy: 3041, CAD: 1,315), the validation dataset included 542 cases (healthy: 379, CAD: 163), and the test dataset included 545 cases (healthy: 381, CAD: 164) [5].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 5,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 7,
+              "relevant": true
+            }
+          ],
+          "latency_s": 15.582758500000182,
+          "top_distance": 0.5503965616226196,
+          "error": null
+        },
+        {
+          "id": "q13",
+          "question": "Which data augmentation techniques were applied to the SPECT images?",
+          "answerable": true,
+          "expected_answer": "Slight rotation (up to five degrees), brightness change, zooming and shifting; classes were augmented to 12,000 images each.",
+          "answer": "The data augmentation technique applied was randomly moving the margin space caused by zooming for each slice, followed by concatenation of augmented images to generate new images [2].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 2,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 8,
+              "relevant": true
+            }
+          ],
+          "latency_s": 12.292827400000078,
+          "top_distance": 0.4590685963630676,
+          "error": null
+        },
+        {
+          "id": "q14",
+          "question": "What hardware and software environment was used to train the deep learning model?",
+          "answerable": true,
+          "expected_answer": "A server with two Quadro RTX8000 GPUs, using TensorFlow 2.4.0 and Python 3.7.7 in Docker.",
+          "answer": "The deep learning model was trained on a GPGPU server with two CPUs (Xeon Silver 4210R 2.40 GHz), 768 GB CPU memory, and two GPUs (Quadro RTX8000 48 GB GDDR6 from NVIDIA, Santa Clara, CA, USA). The software environment included the Nvidia-Docker system with Ubuntu 20.04, CUDA 11.2, cuDNN 8.1, Anaconda 4.11.0, Python 3.7.7, and TensorFlow 2.4.0 [4].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 4,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 9,
+              "relevant": true
+            }
+          ],
+          "latency_s": 13.573828500000218,
+          "top_distance": 0.4786165952682495,
+          "error": null
+        },
+        {
+          "id": "q15",
+          "question": "Why is it unclear whether the SPECT deep learning diagnosis system would work at other hospitals?",
+          "answerable": true,
+          "expected_answer": "The dataset was collected from a single center (Keio University).",
+          "answer": "The dataset was collected from a single center, Keio University; thus, it is unclear whether our system can be applied to other facilities [2].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 2,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 6,
+              "relevant": true
+            }
+          ],
+          "latency_s": 9.428289599999971,
+          "top_distance": 0.43027424812316895,
+          "error": null
+        },
+        {
+          "id": "q16",
+          "question": "How many participants took part in the simultaneous EEG-fMRI evaluation, and how many were analysed for each task?",
+          "answerable": true,
+          "expected_answer": "Sixteen participants; 12 analysed for resting-state and visual evoked potentials and 13 for finger tapping.",
+          "answer": "The uploaded documents do not contain enough evidence to answer this question.",
+          "answered": false,
+          "citations": [],
+          "latency_s": 87.53728890000002,
+          "top_distance": 0.35475343465805054,
+          "error": null
+        },
+        {
+          "id": "q17",
+          "question": "What are the main types of MR artifacts that contaminate EEG recorded inside the scanner?",
+          "answerable": true,
+          "expected_answer": "Imaging (gradient) artifacts, ballistocardiogram (BCG) artifacts, and vibration artifacts such as those from the helium pump.",
+          "answer": "The main types of MR artifacts that contaminate EEG recorded inside the scanner are gradient or imaging artifacts and ballistocardiogram (BCG) artifacts [2].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 2,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 2,
+              "relevant": true
+            }
+          ],
+          "latency_s": 22.13497129999996,
+          "top_distance": 0.3262903690338135,
+          "error": null
+        },
+        {
+          "id": "q18",
+          "question": "How does average artifact subtraction work, and what assumptions does it make?",
+          "answerable": true,
+          "expected_answer": "It averages the EEG over several periods to build an artifact template and subtracts it; it assumes the neural signal is uncorrelated across averaged epochs and the artifact is stationary.",
+          "answer": "Average artifact subtraction (AAS) works by averaging the EEG signal (channel-wise) over several fMRI volume or slice periods to create an artifact template, which is then subtracted from the raw EEG signal [1]. \n\nAAS makes two key assumptions: (1) the EEG signal of interest is uncorrelated between the epochs averaged when computing the average artifact template, and (2) the induced imaging artifact is stationary over time [1].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 1,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 3,
+              "relevant": true
+            }
+          ],
+          "latency_s": 17.63113459999977,
+          "top_distance": 0.4364745616912842,
+          "error": null
+        },
+        {
+          "id": "q19",
+          "question": "What is the carbon-wire loop method and how many loops does it use?",
+          "answerable": true,
+          "expected_answer": "A reference-signal method using six carbon-wire loops (four on the head, two on cables), isolated from the scalp; their signals and time-shifted copies are regressed out of the EEG.",
+          "answer": "The carbon-wire loop (CWL) method is a reference signal regression technique that uses six carbon-wire loops, which are isolated from the scalp and exclusively capture MR-induced artifacts [1]. The method works by regressing out the signals from these loops from the EEG signal to reduce MR artifacts [2].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 1,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 2,
+              "relevant": true
+            },
+            {
+              "reference": 2,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 5,
+              "relevant": true
+            }
+          ],
+          "latency_s": 26.350188100000196,
+          "top_distance": 0.6042855978012085,
+          "error": null
+        },
+        {
+          "id": "q20",
+          "question": "Which artifact reduction method best recovered alpha and beta band changes during finger tapping?",
+          "answerable": true,
+          "expected_answer": "The carbon-wire loop (CWL) method; no other method substantially improved the alpha or beta results.",
+          "answer": "Based on the provided sources, the artifact reduction method that best recovered alpha and beta band changes during finger tapping is **OBS** (Orthogonal Basis of Signals). \n\nThis conclusion is supported by the following evidence from the sources:\n- Source [2] explicitly states: \"The slightly better performance of OBS over AAS\" (where AAS is Artifact-Adjusted Signal). This indicates that OBS outperformed AAS in recovering the neural signal for alpha and beta bands.\n- Source [3] states: \"The similar performance of the IAR, AAS, and CWL methods\" (where IAR is Independent Component Analysis with Regression, CWL is Common Wavelet, and AAS is Artifact-Adjusted Signal). This implies that IAR, AAS, and CWL performed comparably for alpha and beta bands, but OBS showed a slight improvement over AAS.\n\nThe analysis focuses on the expected neural changes during finger tapping, which are decreases in alpha and beta bands (as noted in Source [1]). OBS demonstrated the best recovery of these changes relative to the other methods, with IAR, AAS, and CWL performing similarly but less effectively than OBS.\n\nThus, **OBS** is the method that best recovered alpha and beta band changes during finger tapping.\n\n**Key References**:\n- Source [2]: \"The slightly better performance of OBS over AAS\"\n- Source [3]: \"The similar performance of the IAR, AAS, and CWL methods\" and \"In comparison to the alpha and beta bands, MR artifact reduction methods did somewhat improve relative sensitivity to event-related gamma band synchronization\" (indicating that alpha and beta bands were less effectively recovered by the methods compared to gamma bands).\n\n\\boxed{OBS}",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 2,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 15,
+              "relevant": true
+            },
+            {
+              "reference": 3,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 15,
+              "relevant": true
+            },
+            {
+              "reference": 1,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 10,
+              "relevant": true
+            }
+          ],
+          "latency_s": 81.59482200000002,
+          "top_distance": 0.4127686023712158,
+          "error": null
+        },
+        {
+          "id": "q21",
+          "question": "What do the authors recommend for EEG-fMRI studies where participants must make voluntary movements?",
+          "answerable": true,
+          "expected_answer": "Use a reference-signal-based artifact correction such as a carbon-wire loop system.",
+          "answer": "The authors recommend that tasks requiring any voluntary motor responses, however weak they may be, utilize a reference signal-based approach to artifact correction to ensure high-quality EEG data for further analyses [4].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 4,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 17,
+              "relevant": true
+            }
+          ],
+          "latency_s": 15.09213660000023,
+          "top_distance": 0.38334959745407104,
+          "error": null
+        },
+        {
+          "id": "q22",
+          "question": "Which probabilistic programming language was used to estimate the statistical models?",
+          "answerable": true,
+          "expected_answer": "Stan.",
+          "answer": "Stan [1][2]",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 1,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 9,
+              "relevant": true
+            },
+            {
+              "reference": 2,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 9,
+              "relevant": true
+            }
+          ],
+          "latency_s": 7.6313507999998365,
+          "top_distance": 0.4356147050857544,
+          "error": null
+        },
+        {
+          "id": "q23",
+          "question": "What is the recommended dose of beta blockers for patients with coronary artery disease?",
+          "answerable": false,
+          "expected_answer": null,
+          "answer": "The uploaded documents do not contain enough evidence to answer this question.",
+          "answered": false,
+          "citations": [],
+          "latency_s": 8.73745770000005,
+          "top_distance": 0.5564795732498169,
+          "error": null
+        },
+        {
+          "id": "q24",
+          "question": "Which deep learning model did the EEG-fMRI study use to remove MR artifacts?",
+          "answerable": false,
+          "expected_answer": null,
+          "answer": "The uploaded documents do not contain enough evidence to answer this question.",
+          "answered": false,
+          "citations": [],
+          "latency_s": 22.1795560999999,
+          "top_distance": 0.32716798782348633,
+          "error": null
+        },
+        {
+          "id": "q25",
+          "question": "What was the 10-year all-cause mortality rate reported in the REFINE SPECT registry?",
+          "answerable": false,
+          "expected_answer": null,
+          "answer": "The uploaded documents do not contain enough evidence to answer this question.",
+          "answered": false,
+          "citations": [],
+          "latency_s": 20.426204899999902,
+          "top_distance": 0.3918132781982422,
+          "error": null
+        },
+        {
+          "id": "q26",
+          "question": "Who won the 2018 football World Cup?",
+          "answerable": false,
+          "expected_answer": null,
+          "answer": "The uploaded documents do not contain enough evidence to answer this question.",
+          "answered": false,
+          "citations": [],
+          "latency_s": 9.272456999999577,
+          "top_distance": 0.8140513896942139,
+          "error": null
+        }
+      ]
+    },
+    "qwen3:4b-instruct": {
+      "summary": {
+        "questions_answerable": 22,
+        "questions_unanswerable": 4,
+        "errors": 0,
+        "answer_rate": 0.9545454545454546,
+        "correct_refusal_rate": 1.0,
+        "citation_hit_rate": 1.0,
+        "citation_precision": 0.9428571428571428,
+        "latency_s": {
+          "mean": 2.199017211538463,
+          "median": 2.4005388000002768,
+          "p95": 3.730464600000232,
+          "min": 0.8424776999995629,
+          "max": 4.00464299999976
+        }
+      },
+      "answers": [
+        {
+          "id": "q01",
+          "question": "How many patients and how many centers does the updated REFINE SPECT registry include?",
+          "answerable": true,
+          "expected_answer": "45,252 patients from 13 centers.",
+          "answer": "The updated REFINE SPECT registry includes 45,252 patients from 13 centers [4].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 4,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 6,
+              "relevant": true
+            }
+          ],
+          "latency_s": 1.1402158000000782,
+          "top_distance": 0.27994537353515625,
+          "error": null
+        },
+        {
+          "id": "q02",
+          "question": "Which events were counted as major adverse cardiovascular events (MACEs) in the registry?",
+          "answerable": true,
+          "expected_answer": "All-cause mortality, nonfatal myocardial infarction, unstable angina, and late coronary revascularization.",
+          "answer": "Major adverse cardiovascular events (MACEs) in the registry comprised all-cause mortality, nonfatal myocardial infarction, unstable angina, or late coronary revascularization [1].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 1,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 2,
+              "relevant": true
+            }
+          ],
+          "latency_s": 1.4330684999999903,
+          "top_distance": 0.3942217230796814,
+          "error": null
+        },
+        {
+          "id": "q03",
+          "question": "What degree of coronary stenosis was considered significant or obstructive on invasive angiography?",
+          "answerable": true,
+          "expected_answer": "At least 70% in the LAD, left circumflex or right coronary artery, or at least 50% in the left main coronary artery.",
+          "answer": "A stenosis severity of at least 70% in the left anterior descending artery, left circumflex artery, or right coronary artery, or of at least 50% in the left main coronary artery, was considered significant [1]. Obstructive CAD was defined as stenosis \u226550% in the left main or \u226570% in any other coronary artery [2][3]. \n\nTherefore, the degree of coronary stenosis considered significant or obstructive on invasive angiography was at least 50% in the left main coronary artery or at least 70% in any other coronary artery [2][3].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 1,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 2,
+              "relevant": true
+            },
+            {
+              "reference": 2,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 3,
+              "relevant": true
+            },
+            {
+              "reference": 3,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 5,
+              "relevant": true
+            }
+          ],
+          "latency_s": 3.147178199999871,
+          "top_distance": 0.3818177580833435,
+          "error": null
+        },
+        {
+          "id": "q04",
+          "question": "How was coronary artery calcium scored from the CT attenuation scans, and how well did the deep learning scores agree with expert scores?",
+          "answerable": true,
+          "expected_answer": "Experts annotated CAC, and a deep learning model derived scores automatically; agreement with expert scores was good (Cohen kappa 0.80).",
+          "answer": "Coronary artery calcium (CAC) scores from CT attenuation scans were derived automatically using a deep learning model that was previously developed in a separate population of 500 patients. The model integrates slice thickness into the CAC calculation to account for differences between studies [3]. The deep learning CAC scores agreed well with expert CAC scores in external populations with different acquisition parameters, with a Cohen k of 0.80 [3].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 3,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 4,
+              "relevant": true
+            }
+          ],
+          "latency_s": 2.5567697999999837,
+          "top_distance": 0.341513991355896,
+          "error": null
+        },
+        {
+          "id": "q05",
+          "question": "How much higher was the risk of MACEs for patients with a deep learning coronary calcium score above 400?",
+          "answerable": true,
+          "expected_answer": "Unadjusted hazard ratio of 5.17 (95% CI 4.41-6.05) compared with a CAC of 0.",
+          "answer": "The risk of MACEs for patients with a deep learning coronary calcium score above 400 was 5.17 times higher than for those with a score of 0, as indicated by the unadjusted hazard ratio (HR) of 5.17 (95% CI, 4.41\u20136.05) [2][3].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 2,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 1,
+              "relevant": true
+            },
+            {
+              "reference": 3,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 5,
+              "relevant": true
+            }
+          ],
+          "latency_s": 2.5927755000002435,
+          "top_distance": 0.3827158212661743,
+          "error": null
+        },
+        {
+          "id": "q06",
+          "question": "What limitations does the REFINE SPECT registry have?",
+          "answerable": true,
+          "expected_answer": "Least-common-denominator data; visual stenosis assessment overestimates functionally significant disease versus fractional flow reserve; all-cause death used; heterogeneity between centers and interobserver variability.",
+          "answer": "The REFINE SPECT registry has limitations including that coronary stenosis on invasive coronary angiography is assessed by visual assessment at each site, and visual assessment is known to overestimate the prevalence of functionally significant disease when compared with fractional flow reserve. Additionally, the original registry was too small to assess some subgroups, such as patients with peripheral artery disease. There is also potential heterogeneity between centers, as well as interobserver and intercenter variability in visual SPECT interpretation. [2][3][5]",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 2,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 1,
+              "relevant": false
+            },
+            {
+              "reference": 3,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 6,
+              "relevant": true
+            },
+            {
+              "reference": 5,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 6,
+              "relevant": true
+            }
+          ],
+          "latency_s": 2.427950900000269,
+          "top_distance": 0.36691415309906006,
+          "error": null
+        },
+        {
+          "id": "q07",
+          "question": "How long did batch processing of each patient case take?",
+          "answerable": true,
+          "expected_answer": "Approximately 2.1 seconds per complete patient case.",
+          "answer": "The batch processing of each patient case took approximately 2.1 seconds. [1]",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 1,
+              "paper": "jnumed.124.268292.pdf",
+              "page": 4,
+              "relevant": true
+            }
+          ],
+          "latency_s": 0.8717944999998508,
+          "top_distance": 0.6592532396316528,
+          "error": null
+        },
+        {
+          "id": "q08",
+          "question": "How accurate was the AI system compared with cardiologists working with and without AI guidance?",
+          "answerable": true,
+          "expected_answer": "AI 88%, cardiologists with AI guidance 80%, cardiologists alone 65%.",
+          "answer": "The AI system had an accuracy of 88%, which was higher than cardiologists working without AI guidance (65%) and cardiologists with AI guidance (80%) [4]. Additionally, the AI model showed an accuracy of 0.94 in the highly reliable zone (over 90% and under 10% probability), 0.88 in the moderately reliable zone (80\u201390% and 10\u201320% probability), and 0.62 in the low reliability zone (20\u201380% probability) [2]. These results indicate that the AI system outperformed cardiologists working without AI guidance and was comparable to or slightly better than cardiologists with AI guidance [4][2].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 4,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 1,
+              "relevant": true
+            },
+            {
+              "reference": 2,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 4,
+              "relevant": true
+            }
+          ],
+          "latency_s": 3.2678977999999006,
+          "top_distance": 0.3999338150024414,
+          "error": null
+        },
+        {
+          "id": "q09",
+          "question": "How did noise and artifacts in the images affect the performance of the diagnosis model?",
+          "answerable": true,
+          "expected_answer": "14.2% of images contained artifacts; performance was much lower on them (AUC 0.74, AUPRC 0.78) than on non-artifact images (AUC 0.93, AUPRC 0.90).",
+          "answer": "Noise and artifacts in the images reduced the diagnostic accuracy of the model, as artifact images were significantly harder to interpret correctly compared to non-artifact images. The performance of the model on non-artifact images (AUC: 0.93, AUPRC: 0.90) was much higher than that on artifact images (AUC: 0.74, AUPRC: 0.78), indicating that artifacts degraded model performance [1][4]. Additionally, the presence of noises and artifacts in the dataset, which accounted for 14.2% of images, contributed to challenges in accurate diagnosis [4].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 1,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 8,
+              "relevant": false
+            },
+            {
+              "reference": 4,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 3,
+              "relevant": true
+            }
+          ],
+          "latency_s": 3.1153502000001936,
+          "top_distance": 0.4245460033416748,
+          "error": null
+        },
+        {
+          "id": "q10",
+          "question": "Which image axis gave the best performance when a model was trained on a single axis?",
+          "answerable": true,
+          "expected_answer": "The short axis (AUC 0.88, AUPRC 0.83).",
+          "answer": "The short-axis model had the highest performance among the three single-axis models [2].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 2,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 4,
+              "relevant": true
+            }
+          ],
+          "latency_s": 1.0175681999999142,
+          "top_distance": 0.5178907513618469,
+          "error": null
+        },
+        {
+          "id": "q11",
+          "question": "What neural network architecture was used, and how were the three image axes combined with the patient's age and sex?",
+          "answerable": true,
+          "expected_answer": "A 3D CNN based on ResNet-34 with three branches (one per axis) whose outputs are concatenated with age and sex before dense layers.",
+          "answer": "A 3D-CNN based on a deep residual network was used as the neural network architecture. The 4D-data from the three axes (horizontal long, vertical long, and short) were input as two-channel 3D data to the 3D-CNN, which processed each data from the three axes [3]. In training step 1, the model was trained using only a single-axis dataset without age and sex information. In training step 2, the top layers before the dense layers of the step 1 model were transferred to a model with three branches that included sex and gender information, and the weights of these transferred top layers were fixed while only the dense layers were updated [1][2][3]. The patient's age and sex data were concatenated with the outputs of the branches and used as input to the dense layers [1].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 3,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 2,
+              "relevant": true
+            },
+            {
+              "reference": 1,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 8,
+              "relevant": true
+            },
+            {
+              "reference": 2,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 8,
+              "relevant": true
+            }
+          ],
+          "latency_s": 3.730464600000232,
+          "top_distance": 0.42597144842147827,
+          "error": null
+        },
+        {
+          "id": "q12",
+          "question": "How were the data divided into training, validation and test sets?",
+          "answerable": true,
+          "expected_answer": "10% for testing and 10% of the rest for validation: 4356 training, 542 validation and 545 test cases.",
+          "answer": "The data were divided into training, validation, and test sets as follows: next, we randomly extracted 10% of the available data for the test dataset; 10% of the remaining data were used for validation, and the remaining data were utilized for training. Separation was performed for each label. The training dataset included 4356 cases (healthy: 3041, CAD: 1,315), the validation dataset included 542 cases (healthy: 379, CAD: 163), and the test dataset included 545 cases (healthy: 381, CAD: 164) (Fig. S1). [5]",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 5,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 7,
+              "relevant": true
+            }
+          ],
+          "latency_s": 3.611739099999795,
+          "top_distance": 0.5503965616226196,
+          "error": null
+        },
+        {
+          "id": "q13",
+          "question": "Which data augmentation techniques were applied to the SPECT images?",
+          "answerable": true,
+          "expected_answer": "Slight rotation (up to five degrees), brightness change, zooming and shifting; classes were augmented to 12,000 images each.",
+          "answer": "The data augmentation technique applied to the SPECT images was randomly moving the margin space caused by zooming. This procedure was applied to each slice, and the augmented images were concatenated to generate new images. This method increases the dataset size without degrading information or modifying class imbalance, helping to reduce overfitting. [2]",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 2,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 8,
+              "relevant": true
+            }
+          ],
+          "latency_s": 1.8825329999999667,
+          "top_distance": 0.4590685963630676,
+          "error": null
+        },
+        {
+          "id": "q14",
+          "question": "What hardware and software environment was used to train the deep learning model?",
+          "answerable": true,
+          "expected_answer": "A server with two Quadro RTX8000 GPUs, using TensorFlow 2.4.0 and Python 3.7.7 in Docker.",
+          "answer": "The hardware and software environment used to train the deep learning model included a GPGPU server with two CPUs (Xeon Silver 4210R at 2.40 GHz), 768 GB of CPU memory, and two GPUs (Quadro RTX8000 with 48 GB of GDDR6 memory). The analysis environment was based on the Nvidia-Docker system with Ubuntu 20.04, CUDA 11.2, cuDNN 8.1, Anaconda 4.11.0, Python 3.7.7, and TensorFlow 2.4.0 [4].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 4,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 9,
+              "relevant": true
+            }
+          ],
+          "latency_s": 3.2018773999998302,
+          "top_distance": 0.4786165952682495,
+          "error": null
+        },
+        {
+          "id": "q15",
+          "question": "Why is it unclear whether the SPECT deep learning diagnosis system would work at other hospitals?",
+          "answerable": true,
+          "expected_answer": "The dataset was collected from a single center (Keio University).",
+          "answer": "It is unclear whether the SPECT deep learning diagnosis system would work at other hospitals because the dataset was collected from a single center, Keio University, and there is no information provided about the generalizability of the system across different facilities [2]. While the system can be applied to other facilities through additional learning and model training on their datasets, the initial training and performance are based on data from one center, which limits confidence in its applicability elsewhere [2].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 2,
+              "paper": "s41598-024-64445-2.pdf",
+              "page": 6,
+              "relevant": true
+            }
+          ],
+          "latency_s": 2.5147101000002294,
+          "top_distance": 0.43027424812316895,
+          "error": null
+        },
+        {
+          "id": "q16",
+          "question": "How many participants took part in the simultaneous EEG-fMRI evaluation, and how many were analysed for each task?",
+          "answerable": true,
+          "expected_answer": "Sixteen participants; 12 analysed for resting-state and visual evoked potentials and 13 for finger tapping.",
+          "answer": "Sixteen healthy young adults participated in the simultaneous EEG-fMRI evaluation [1][4]. For the analysis, 12 participants were included in the resting-state and VEP task analysis, and 13 participants were included in the finger tapping task analysis [1].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 1,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 5,
+              "relevant": true
+            },
+            {
+              "reference": 4,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 5,
+              "relevant": true
+            }
+          ],
+          "latency_s": 1.6289515999997093,
+          "top_distance": 0.35475343465805054,
+          "error": null
+        },
+        {
+          "id": "q17",
+          "question": "What are the main types of MR artifacts that contaminate EEG recorded inside the scanner?",
+          "answerable": true,
+          "expected_answer": "Imaging (gradient) artifacts, ballistocardiogram (BCG) artifacts, and vibration artifacts such as those from the helium pump.",
+          "answer": "The main types of MR artifacts that contaminate EEG recorded inside the scanner are gradient or imaging artifacts and ballistocardiogram (BCG) artifacts. Gradient artifacts arise from changes in the magnetic field due to rapid switching of gradient coils during MRI acquisition. BCG artifacts result from involuntary head and electrode movements caused by ballistic cardiac activity. Additionally, electromagnetic induction in conductive loops formed by EEG electrodes and head tissue leads to artifacts that are superimposed on the neuronal signal and generally exceed it in amplitude [2][3].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 2,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 2,
+              "relevant": true
+            },
+            {
+              "reference": 3,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 2,
+              "relevant": true
+            }
+          ],
+          "latency_s": 2.5338330000004134,
+          "top_distance": 0.3262903690338135,
+          "error": null
+        },
+        {
+          "id": "q18",
+          "question": "How does average artifact subtraction work, and what assumptions does it make?",
+          "answerable": true,
+          "expected_answer": "It averages the EEG over several periods to build an artifact template and subtracts it; it assumes the neural signal is uncorrelated across averaged epochs and the artifact is stationary.",
+          "answer": "Average artifact subtraction (AAS) works by averaging the EEG signal channel-wise over several fMRI volume or slice periods to create an artifact template, which is then subtracted from the raw EEG signal [1]. It assumes that the EEG signal of interest is uncorrelated between the epochs averaged when computing the artifact template and that the induced imaging artifact is stationary over time [1]. These assumptions may not always hold in practice, leading to residual artifacts [1].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 1,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 3,
+              "relevant": true
+            }
+          ],
+          "latency_s": 2.3731267000002845,
+          "top_distance": 0.4364745616912842,
+          "error": null
+        },
+        {
+          "id": "q19",
+          "question": "What is the carbon-wire loop method and how many loops does it use?",
+          "answerable": true,
+          "expected_answer": "A reference-signal method using six carbon-wire loops (four on the head, two on cables), isolated from the scalp; their signals and time-shifted copies are regressed out of the EEG.",
+          "answer": "The carbon-wire loop (CWL) method is a reference signal approach that uses a set of six carbon-wire loops isolated from the scalp to capture MR-induced artifacts. These loops are used to record reference signals that are then regressed out of the EEG signal to reduce MR artifacts. The method is affordable, straightforward to implement, and uses openly available software. It allows for effective MR artifact reduction, particularly in the context of EEG-fMRI studies, and avoids the hardware complexity associated with other reference signal systems. The method uses six loops. [1][2][3]",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 1,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 2,
+              "relevant": true
+            },
+            {
+              "reference": 2,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 5,
+              "relevant": true
+            },
+            {
+              "reference": 3,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 1,
+              "relevant": true
+            }
+          ],
+          "latency_s": 2.809939900000245,
+          "top_distance": 0.6042855978012085,
+          "error": null
+        },
+        {
+          "id": "q20",
+          "question": "Which artifact reduction method best recovered alpha and beta band changes during finger tapping?",
+          "answerable": true,
+          "expected_answer": "The carbon-wire loop (CWL) method; no other method substantially improved the alpha or beta results.",
+          "answer": "The uploaded documents do not contain enough evidence to answer this question.",
+          "answered": false,
+          "citations": [],
+          "latency_s": 4.00464299999976,
+          "top_distance": 0.4127686023712158,
+          "error": null
+        },
+        {
+          "id": "q21",
+          "question": "What do the authors recommend for EEG-fMRI studies where participants must make voluntary movements?",
+          "answerable": true,
+          "expected_answer": "Use a reference-signal-based artifact correction such as a carbon-wire loop system.",
+          "answer": "The authors recommend that tasks requiring any voluntary motor responses, however weak they may be, utilize a reference signal-based approach to artifact correction to ensure high-quality EEG data for further analyses [4]. This is because such tasks introduce additional artifacts, and a reference signal method like CWL allows for independent acquisition of motion-related artifactual signals and their removal, which is not possible with conventional methods [4].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 4,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 17,
+              "relevant": true
+            }
+          ],
+          "latency_s": 2.2006953999998586,
+          "top_distance": 0.38334959745407104,
+          "error": null
+        },
+        {
+          "id": "q22",
+          "question": "Which probabilistic programming language was used to estimate the statistical models?",
+          "answerable": true,
+          "expected_answer": "Stan.",
+          "answer": "The probabilistic programming language used to estimate the statistical models was Stan [1][2].",
+          "answered": true,
+          "citations": [
+            {
+              "reference": 1,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 9,
+              "relevant": true
+            },
+            {
+              "reference": 2,
+              "paper": "fnimg-01-968363.pdf",
+              "page": 9,
+              "relevant": true
+            }
+          ],
+          "latency_s": 1.1218782000000829,
+          "top_distance": 0.4356147050857544,
+          "error": null
+        },
+        {
+          "id": "q23",
+          "question": "What is the recommended dose of beta blockers for patients with coronary artery disease?",
+          "answerable": false,
+          "expected_answer": null,
+          "answer": "The uploaded documents do not contain enough evidence to answer this question.",
+          "answered": false,
+          "citations": [],
+          "latency_s": 1.1479917000001478,
+          "top_distance": 0.5564795732498169,
+          "error": null
+        },
+        {
+          "id": "q24",
+          "question": "Which deep learning model did the EEG-fMRI study use to remove MR artifacts?",
+          "answerable": false,
+          "expected_answer": null,
+          "answer": "The uploaded documents do not contain enough evidence to answer this question.",
+          "answered": false,
+          "citations": [],
+          "latency_s": 0.9537576999996418,
+          "top_distance": 0.32716798782348633,
+          "error": null
+        },
+        {
+          "id": "q25",
+          "question": "What was the 10-year all-cause mortality rate reported in the REFINE SPECT registry?",
+          "answerable": false,
+          "expected_answer": null,
+          "answer": "The uploaded documents do not contain enough evidence to answer this question.",
+          "answered": false,
+          "citations": [],
+          "latency_s": 0.8424776999995629,
+          "top_distance": 0.3918132781982422,
+          "error": null
+        },
+        {
+          "id": "q26",
+          "question": "Who won the 2018 football World Cup?",
+          "answerable": false,
+          "expected_answer": null,
+          "answer": "The uploaded documents do not contain enough evidence to answer this question.",
+          "answered": false,
+          "citations": [],
+          "latency_s": 1.0452589999999873,
+          "top_distance": 0.8140513896942139,
+          "error": null
+        }
+      ]
+    }
+  }
+}

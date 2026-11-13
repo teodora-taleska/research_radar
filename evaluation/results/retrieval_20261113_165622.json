@@ -1,0 +1,2229 @@
+{
+  "created_at": "2026-11-13T16:56:22",
+  "config": {
+    "embedding_model": "embeddinggemma",
+    "embedding_dimension": 768,
+    "distance_metric": "cosine",
+    "chunk_size": 1200,
+    "chunk_overlap": 200,
+    "ks": [
+      1,
+      3,
+      5,
+      10
+    ],
+    "papers": [
+      "fnimg-01-968363.pdf",
+      "jnumed.124.268292.pdf",
+      "s41598-024-64445-2.pdf"
+    ],
+    "indexed_chunks": 203,
+    "questions_evaluated": 22,
+    "questions_unanswerable": 4
+  },
+  "summary": {
+    "precision_at_k": {
+      "1": 0.6363636363636364,
+      "3": 0.6212121212121212,
+      "5": 0.5363636363636364,
+      "10": 0.40454545454545465
+    },
+    "recall_at_k": {
+      "1": 0.3386363636363636,
+      "3": 0.7696969696969695,
+      "5": 0.890909090909091,
+      "10": 0.9545454545454546
+    },
+    "latency_ms": {
+      "mean": 35.92953181816938,
+      "median": 31.95620000008148,
+      "p95": 51.50039999989531,
+      "min": 28.097900000148,
+      "max": 63.34960000003775
+    }
+  },
+  "questions": [
+    {
+      "id": "q01",
+      "question": "How many patients and how many centers does the updated REFINE SPECT registry include?",
+      "relevant": [
+        {
+          "paper": "jnumed.124.268292.pdf",
+          "page": 1
+        },
+        {
+          "paper": "jnumed.124.268292.pdf",
+          "page": 4
+        },
+        {
+          "paper": "jnumed.124.268292.pdf",
+          "page": 6
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 2,
+          "distance": 0.27994537353515625,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 1,
+          "distance": 0.36553215980529785,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 4,
+          "distance": 0.3749447464942932,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 6,
+          "distance": 0.3754723072052002,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 6,
+          "distance": 0.4100637435913086,
+          "relevant": true
+        },
+        {
+          "rank": 6,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 1,
+          "distance": 0.41111618280410767,
+          "relevant": true
+        },
+        {
+          "rank": 7,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 1,
+          "distance": 0.42150378227233887,
+          "relevant": true
+        },
+        {
+          "rank": 8,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 6,
+          "distance": 0.43399786949157715,
+          "relevant": true
+        },
+        {
+          "rank": 9,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 4,
+          "distance": 0.4362242817878723,
+          "relevant": true
+        },
+        {
+          "rank": 10,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 1,
+          "distance": 0.44257664680480957,
+          "relevant": true
+        }
+      ],
+      "precision_at_k": {
+        "1": 0.0,
+        "3": 0.6666666666666666,
+        "5": 0.8,
+        "10": 0.9
+      },
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 0.6666666666666666,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "latency_ms": 51.50039999989531
+    },
+    {
+      "id": "q02",
+      "question": "Which events were counted as major adverse cardiovascular events (MACEs) in the registry?",
+      "relevant": [
+        {
+          "paper": "jnumed.124.268292.pdf",
+          "page": 1
+        },
+        {
+          "paper": "jnumed.124.268292.pdf",
+          "page": 2
+        },
+        {
+          "paper": "jnumed.124.268292.pdf",
+          "page": 5
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 2,
+          "distance": 0.3942217230796814,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 5,
+          "distance": 0.4547542929649353,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 5,
+          "distance": 0.46355748176574707,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 5,
+          "distance": 0.46402692794799805,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 5,
+          "distance": 0.47337019443511963,
+          "relevant": true
+        },
+        {
+          "rank": 6,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 4,
+          "distance": 0.4828222990036011,
+          "relevant": false
+        },
+        {
+          "rank": 7,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 1,
+          "distance": 0.48429811000823975,
+          "relevant": true
+        },
+        {
+          "rank": 8,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 1,
+          "distance": 0.4903895854949951,
+          "relevant": true
+        },
+        {
+          "rank": 9,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 6,
+          "distance": 0.5013775825500488,
+          "relevant": false
+        },
+        {
+          "rank": 10,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 2,
+          "distance": 0.5134461522102356,
+          "relevant": true
+        }
+      ],
+      "precision_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0,
+        "10": 0.8
+      },
+      "recall_at_k": {
+        "1": 0.3333333333333333,
+        "3": 0.6666666666666666,
+        "5": 0.6666666666666666,
+        "10": 1.0
+      },
+      "latency_ms": 38.26019999996788
+    },
+    {
+      "id": "q03",
+      "question": "What degree of coronary stenosis was considered significant or obstructive on invasive angiography?",
+      "relevant": [
+        {
+          "paper": "jnumed.124.268292.pdf",
+          "page": 2
+        },
+        {
+          "paper": "jnumed.124.268292.pdf",
+          "page": 3
+        },
+        {
+          "paper": "jnumed.124.268292.pdf",
+          "page": 5
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 2,
+          "distance": 0.3818177580833435,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 3,
+          "distance": 0.4706474542617798,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 5,
+          "distance": 0.479034960269928,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 3,
+          "distance": 0.5039277672767639,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 9,
+          "distance": 0.5111461877822876,
+          "relevant": false
+        },
+        {
+          "rank": 6,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 7,
+          "distance": 0.5343934297561646,
+          "relevant": false
+        },
+        {
+          "rank": 7,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 4,
+          "distance": 0.5445460081100464,
+          "relevant": false
+        },
+        {
+          "rank": 8,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 3,
+          "distance": 0.5504265427589417,
+          "relevant": true
+        },
+        {
+          "rank": 9,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 6,
+          "distance": 0.5607395172119141,
+          "relevant": false
+        },
+        {
+          "rank": 10,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 1,
+          "distance": 0.564971923828125,
+          "relevant": false
+        }
+      ],
+      "precision_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 0.8,
+        "10": 0.5
+      },
+      "recall_at_k": {
+        "1": 0.3333333333333333,
+        "3": 1.0,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "latency_ms": 63.34960000003775
+    },
+    {
+      "id": "q04",
+      "question": "How was coronary artery calcium scored from the CT attenuation scans, and how well did the deep learning scores agree with expert scores?",
+      "relevant": [
+        {
+          "paper": "jnumed.124.268292.pdf",
+          "page": 3
+        },
+        {
+          "paper": "jnumed.124.268292.pdf",
+          "page": 4
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 3,
+          "distance": 0.341513991355896,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 6,
+          "distance": 0.3553174138069153,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 4,
+          "distance": 0.3952866792678833,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 6,
+          "distance": 0.4102376699447632,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.4161726236343384,
+          "relevant": false
+        },
+        {
+          "rank": 6,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 1,
+          "distance": 0.42207634449005127,
+          "relevant": false
+        },
+        {
+          "rank": 7,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 1,
+          "distance": 0.4224894642829895,
+          "relevant": false
+        },
+        {
+          "rank": 8,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 6,
+          "distance": 0.42393434047698975,
+          "relevant": false
+        },
+        {
+          "rank": 9,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.43108975887298584,
+          "relevant": false
+        },
+        {
+          "rank": 10,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 3,
+          "distance": 0.43247902393341064,
+          "relevant": true
+        }
+      ],
+      "precision_at_k": {
+        "1": 1.0,
+        "3": 0.6666666666666666,
+        "5": 0.4,
+        "10": 0.3
+      },
+      "recall_at_k": {
+        "1": 0.5,
+        "3": 1.0,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "latency_ms": 32.53249999988839
+    },
+    {
+      "id": "q05",
+      "question": "How much higher was the risk of MACEs for patients with a deep learning coronary calcium score above 400?",
+      "relevant": [
+        {
+          "paper": "jnumed.124.268292.pdf",
+          "page": 1
+        },
+        {
+          "paper": "jnumed.124.268292.pdf",
+          "page": 5
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 5,
+          "distance": 0.3827158212661743,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 1,
+          "distance": 0.3850482702255249,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 5,
+          "distance": 0.38695454597473145,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 5,
+          "distance": 0.4349491596221924,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 1,
+          "distance": 0.4580138921737671,
+          "relevant": true
+        },
+        {
+          "rank": 6,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 5,
+          "distance": 0.4608347415924072,
+          "relevant": true
+        },
+        {
+          "rank": 7,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 5,
+          "distance": 0.48165440559387207,
+          "relevant": true
+        },
+        {
+          "rank": 8,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 6,
+          "distance": 0.48356789350509644,
+          "relevant": false
+        },
+        {
+          "rank": 9,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 6,
+          "distance": 0.48650580644607544,
+          "relevant": false
+        },
+        {
+          "rank": 10,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 4,
+          "distance": 0.49505674839019775,
+          "relevant": false
+        }
+      ],
+      "precision_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0,
+        "10": 0.7
+      },
+      "recall_at_k": {
+        "1": 0.5,
+        "3": 1.0,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "latency_ms": 30.638400000043475
+    },
+    {
+      "id": "q06",
+      "question": "What limitations does the REFINE SPECT registry have?",
+      "relevant": [
+        {
+          "paper": "jnumed.124.268292.pdf",
+          "page": 6
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 2,
+          "distance": 0.36691415309906006,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 1,
+          "distance": 0.4026777744293213,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 6,
+          "distance": 0.42286330461502075,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 1,
+          "distance": 0.42853838205337524,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 6,
+          "distance": 0.4422301650047302,
+          "relevant": true
+        },
+        {
+          "rank": 6,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 6,
+          "distance": 0.46348994970321655,
+          "relevant": true
+        },
+        {
+          "rank": 7,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 1,
+          "distance": 0.4873530864715576,
+          "relevant": false
+        },
+        {
+          "rank": 8,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 1,
+          "distance": 0.4945046305656433,
+          "relevant": false
+        },
+        {
+          "rank": 9,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 5,
+          "distance": 0.5118316411972046,
+          "relevant": false
+        },
+        {
+          "rank": 10,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 4,
+          "distance": 0.5169685482978821,
+          "relevant": false
+        }
+      ],
+      "precision_at_k": {
+        "1": 0.0,
+        "3": 0.3333333333333333,
+        "5": 0.4,
+        "10": 0.3
+      },
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "latency_ms": 39.30399999990186
+    },
+    {
+      "id": "q07",
+      "question": "How long did batch processing of each patient case take?",
+      "relevant": [
+        {
+          "paper": "jnumed.124.268292.pdf",
+          "page": 4
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 4,
+          "distance": 0.6592532396316528,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 2,
+          "distance": 0.6735143661499023,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 16,
+          "distance": 0.6844298839569092,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.6870260834693909,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.6898175477981567,
+          "relevant": false
+        },
+        {
+          "rank": 6,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 2,
+          "distance": 0.6941407918930054,
+          "relevant": false
+        },
+        {
+          "rank": 7,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 4,
+          "distance": 0.6993427276611328,
+          "relevant": false
+        },
+        {
+          "rank": 8,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 7,
+          "distance": 0.7007615566253662,
+          "relevant": false
+        },
+        {
+          "rank": 9,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 3,
+          "distance": 0.7010036706924438,
+          "relevant": false
+        },
+        {
+          "rank": 10,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 1,
+          "distance": 0.71076500415802,
+          "relevant": false
+        }
+      ],
+      "precision_at_k": {
+        "1": 1.0,
+        "3": 0.3333333333333333,
+        "5": 0.2,
+        "10": 0.1
+      },
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "latency_ms": 45.713399999840476
+    },
+    {
+      "id": "q08",
+      "question": "How accurate was the AI system compared with cardiologists working with and without AI guidance?",
+      "relevant": [
+        {
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 1
+        },
+        {
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 4
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 4,
+          "distance": 0.3999338150024414,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 4,
+          "distance": 0.4226963520050049,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 6,
+          "distance": 0.4269232153892517,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 1,
+          "distance": 0.45252567529678345,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 6,
+          "distance": 0.46186572313308716,
+          "relevant": false
+        },
+        {
+          "rank": 6,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 3,
+          "distance": 0.47013843059539795,
+          "relevant": false
+        },
+        {
+          "rank": 7,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 4,
+          "distance": 0.4740391969680786,
+          "relevant": true
+        },
+        {
+          "rank": 8,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 4,
+          "distance": 0.5121007561683655,
+          "relevant": true
+        },
+        {
+          "rank": 9,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 5,
+          "distance": 0.5123664140701294,
+          "relevant": false
+        },
+        {
+          "rank": 10,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 7,
+          "distance": 0.5140217542648315,
+          "relevant": false
+        }
+      ],
+      "precision_at_k": {
+        "1": 1.0,
+        "3": 0.6666666666666666,
+        "5": 0.6,
+        "10": 0.5
+      },
+      "recall_at_k": {
+        "1": 0.5,
+        "3": 0.5,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "latency_ms": 29.07750000008491
+    },
+    {
+      "id": "q09",
+      "question": "How did noise and artifacts in the images affect the performance of the diagnosis model?",
+      "relevant": [
+        {
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 3
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.4245460033416748,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.45099329948425293,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 3,
+          "distance": 0.45251989364624023,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 3,
+          "distance": 0.4535641670227051,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 1,
+          "distance": 0.48740077018737793,
+          "relevant": false
+        },
+        {
+          "rank": 6,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 4,
+          "distance": 0.48814743757247925,
+          "relevant": false
+        },
+        {
+          "rank": 7,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 4,
+          "distance": 0.49078553915023804,
+          "relevant": false
+        },
+        {
+          "rank": 8,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.5039369463920593,
+          "relevant": false
+        },
+        {
+          "rank": 9,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 6,
+          "distance": 0.5075559616088867,
+          "relevant": false
+        },
+        {
+          "rank": 10,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 5,
+          "distance": 0.5122376680374146,
+          "relevant": false
+        }
+      ],
+      "precision_at_k": {
+        "1": 0.0,
+        "3": 0.3333333333333333,
+        "5": 0.4,
+        "10": 0.2
+      },
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "latency_ms": 30.579900000020643
+    },
+    {
+      "id": "q10",
+      "question": "Which image axis gave the best performance when a model was trained on a single axis?",
+      "relevant": [
+        {
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 3
+        },
+        {
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 4
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 4,
+          "distance": 0.5178907513618469,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 4,
+          "distance": 0.5265117883682251,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 3,
+          "distance": 0.5276842713356018,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 2,
+          "distance": 0.5402688384056091,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.5491437315940857,
+          "relevant": false
+        },
+        {
+          "rank": 6,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.5506104826927185,
+          "relevant": false
+        },
+        {
+          "rank": 7,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 7,
+          "distance": 0.5584577322006226,
+          "relevant": false
+        },
+        {
+          "rank": 8,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 4,
+          "distance": 0.5659777522087097,
+          "relevant": true
+        },
+        {
+          "rank": 9,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 1,
+          "distance": 0.5710057020187378,
+          "relevant": false
+        },
+        {
+          "rank": 10,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.5766016244888306,
+          "relevant": false
+        }
+      ],
+      "precision_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 0.6,
+        "10": 0.4
+      },
+      "recall_at_k": {
+        "1": 0.5,
+        "3": 1.0,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "latency_ms": 29.874699999936638
+    },
+    {
+      "id": "q11",
+      "question": "What neural network architecture was used, and how were the three image axes combined with the patient's age and sex?",
+      "relevant": [
+        {
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 2
+        },
+        {
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 7
+        },
+        {
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.42597144842147827,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.44125449657440186,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 2,
+          "distance": 0.46000146865844727,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 7,
+          "distance": 0.46188628673553467,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 4,
+          "distance": 0.46675604581832886,
+          "relevant": false
+        },
+        {
+          "rank": 6,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 7,
+          "distance": 0.4687630534172058,
+          "relevant": true
+        },
+        {
+          "rank": 7,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 2,
+          "distance": 0.47559261322021484,
+          "relevant": true
+        },
+        {
+          "rank": 8,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 3,
+          "distance": 0.4771871566772461,
+          "relevant": false
+        },
+        {
+          "rank": 9,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 4,
+          "distance": 0.4772909879684448,
+          "relevant": false
+        },
+        {
+          "rank": 10,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.4865518808364868,
+          "relevant": true
+        }
+      ],
+      "precision_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 0.8,
+        "10": 0.7
+      },
+      "recall_at_k": {
+        "1": 0.3333333333333333,
+        "3": 0.6666666666666666,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "latency_ms": 37.28840000007949
+    },
+    {
+      "id": "q12",
+      "question": "How were the data divided into training, validation and test sets?",
+      "relevant": [
+        {
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 7
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 2,
+          "distance": 0.5503965616226196,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 7,
+          "distance": 0.5594320297241211,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.5634722113609314,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 7,
+          "distance": 0.5670336484909058,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 7,
+          "distance": 0.568844199180603,
+          "relevant": true
+        },
+        {
+          "rank": 6,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.5720625519752502,
+          "relevant": false
+        },
+        {
+          "rank": 7,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 3,
+          "distance": 0.5964639186859131,
+          "relevant": false
+        },
+        {
+          "rank": 8,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 18,
+          "distance": 0.603131890296936,
+          "relevant": false
+        },
+        {
+          "rank": 9,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.6044613122940063,
+          "relevant": false
+        },
+        {
+          "rank": 10,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 2,
+          "distance": 0.606155276298523,
+          "relevant": false
+        }
+      ],
+      "precision_at_k": {
+        "1": 0.0,
+        "3": 0.3333333333333333,
+        "5": 0.6,
+        "10": 0.3
+      },
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "latency_ms": 40.42809999987185
+    },
+    {
+      "id": "q13",
+      "question": "Which data augmentation techniques were applied to the SPECT images?",
+      "relevant": [
+        {
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 7,
+          "distance": 0.4590685963630676,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.4675291180610657,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 7,
+          "distance": 0.4908069372177124,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 3,
+          "distance": 0.4957333207130432,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 2,
+          "distance": 0.5002830624580383,
+          "relevant": false
+        },
+        {
+          "rank": 6,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 13,
+          "distance": 0.5027647018432617,
+          "relevant": false
+        },
+        {
+          "rank": 7,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 3,
+          "distance": 0.5172893404960632,
+          "relevant": false
+        },
+        {
+          "rank": 8,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.5292692184448242,
+          "relevant": true
+        },
+        {
+          "rank": 9,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 10,
+          "distance": 0.5474459528923035,
+          "relevant": false
+        },
+        {
+          "rank": 10,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 11,
+          "distance": 0.5686463117599487,
+          "relevant": false
+        }
+      ],
+      "precision_at_k": {
+        "1": 0.0,
+        "3": 0.3333333333333333,
+        "5": 0.2,
+        "10": 0.2
+      },
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "latency_ms": 30.808800000158953
+    },
+    {
+      "id": "q14",
+      "question": "What hardware and software environment was used to train the deep learning model?",
+      "relevant": [
+        {
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 9
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 7,
+          "distance": 0.4786165952682495,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 2,
+          "distance": 0.5189355611801147,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.5218089818954468,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 9,
+          "distance": 0.5249762535095215,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.5332828760147095,
+          "relevant": false
+        },
+        {
+          "rank": 6,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.5356800556182861,
+          "relevant": false
+        },
+        {
+          "rank": 7,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 4,
+          "distance": 0.5482548475265503,
+          "relevant": false
+        },
+        {
+          "rank": 8,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 7,
+          "distance": 0.5491864681243896,
+          "relevant": false
+        },
+        {
+          "rank": 9,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 7,
+          "distance": 0.5635892748832703,
+          "relevant": false
+        },
+        {
+          "rank": 10,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 4,
+          "distance": 0.5786786079406738,
+          "relevant": false
+        }
+      ],
+      "precision_at_k": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.2,
+        "10": 0.1
+      },
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "latency_ms": 37.81929999991007
+    },
+    {
+      "id": "q15",
+      "question": "Why is it unclear whether the SPECT deep learning diagnosis system would work at other hospitals?",
+      "relevant": [
+        {
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 6
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 1,
+          "distance": 0.43027424812316895,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 6,
+          "distance": 0.4352715015411377,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 4,
+          "distance": 0.43682098388671875,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 6,
+          "distance": 0.4415464401245117,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 3,
+          "distance": 0.4610291123390198,
+          "relevant": false
+        },
+        {
+          "rank": 6,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 1,
+          "distance": 0.4652954339981079,
+          "relevant": false
+        },
+        {
+          "rank": 7,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 4,
+          "distance": 0.46730488538742065,
+          "relevant": false
+        },
+        {
+          "rank": 8,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 10,
+          "distance": 0.4712607264518738,
+          "relevant": false
+        },
+        {
+          "rank": 9,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 1,
+          "distance": 0.4765700697898865,
+          "relevant": false
+        },
+        {
+          "rank": 10,
+          "paper": "jnumed.124.268292.pdf",
+          "page": 4,
+          "distance": 0.47941339015960693,
+          "relevant": false
+        }
+      ],
+      "precision_at_k": {
+        "1": 0.0,
+        "3": 0.3333333333333333,
+        "5": 0.2,
+        "10": 0.1
+      },
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "latency_ms": 30.670699999973294
+    },
+    {
+      "id": "q16",
+      "question": "How many participants took part in the simultaneous EEG-fMRI evaluation, and how many were analysed for each task?",
+      "relevant": [
+        {
+          "paper": "fnimg-01-968363.pdf",
+          "page": 5
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 5,
+          "distance": 0.35475343465805054,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 17,
+          "distance": 0.38975703716278076,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 6,
+          "distance": 0.390730619430542,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 5,
+          "distance": 0.41097843647003174,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 6,
+          "distance": 0.4149402379989624,
+          "relevant": false
+        },
+        {
+          "rank": 6,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 2,
+          "distance": 0.4287428855895996,
+          "relevant": false
+        },
+        {
+          "rank": 7,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 13,
+          "distance": 0.4311928153038025,
+          "relevant": false
+        },
+        {
+          "rank": 8,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 16,
+          "distance": 0.43290817737579346,
+          "relevant": false
+        },
+        {
+          "rank": 9,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 9,
+          "distance": 0.44426822662353516,
+          "relevant": false
+        },
+        {
+          "rank": 10,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 7,
+          "distance": 0.4448329210281372,
+          "relevant": false
+        }
+      ],
+      "precision_at_k": {
+        "1": 1.0,
+        "3": 0.3333333333333333,
+        "5": 0.4,
+        "10": 0.2
+      },
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "latency_ms": 32.37360000002809
+    },
+    {
+      "id": "q17",
+      "question": "What are the main types of MR artifacts that contaminate EEG recorded inside the scanner?",
+      "relevant": [
+        {
+          "paper": "fnimg-01-968363.pdf",
+          "page": 2
+        },
+        {
+          "paper": "fnimg-01-968363.pdf",
+          "page": 3
+        },
+        {
+          "paper": "fnimg-01-968363.pdf",
+          "page": 4
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 5,
+          "distance": 0.3262903690338135,
+          "relevant": false
+        },
+        {
+          "rank": 2,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 2,
+          "distance": 0.3338813781738281,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 2,
+          "distance": 0.3492695093154907,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 17,
+          "distance": 0.35874366760253906,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 2,
+          "distance": 0.36002886295318604,
+          "relevant": true
+        },
+        {
+          "rank": 6,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 1,
+          "distance": 0.3613778352737427,
+          "relevant": false
+        },
+        {
+          "rank": 7,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 4,
+          "distance": 0.36227136850357056,
+          "relevant": true
+        },
+        {
+          "rank": 8,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 3,
+          "distance": 0.3684083819389343,
+          "relevant": true
+        },
+        {
+          "rank": 9,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 20,
+          "distance": 0.371498703956604,
+          "relevant": false
+        },
+        {
+          "rank": 10,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 2,
+          "distance": 0.3791944980621338,
+          "relevant": true
+        }
+      ],
+      "precision_at_k": {
+        "1": 0.0,
+        "3": 0.6666666666666666,
+        "5": 0.6,
+        "10": 0.6
+      },
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 0.3333333333333333,
+        "5": 0.3333333333333333,
+        "10": 1.0
+      },
+      "latency_ms": 29.640299999982744
+    },
+    {
+      "id": "q18",
+      "question": "How does average artifact subtraction work, and what assumptions does it make?",
+      "relevant": [
+        {
+          "paper": "fnimg-01-968363.pdf",
+          "page": 3
+        },
+        {
+          "paper": "fnimg-01-968363.pdf",
+          "page": 15
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 3,
+          "distance": 0.4364745616912842,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 5,
+          "distance": 0.549423098564148,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 3,
+          "distance": 0.5508239269256592,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 1,
+          "distance": 0.5513696670532227,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 2,
+          "distance": 0.5532402396202087,
+          "relevant": false
+        },
+        {
+          "rank": 6,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 2,
+          "distance": 0.5556619167327881,
+          "relevant": false
+        },
+        {
+          "rank": 7,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 6,
+          "distance": 0.5568554401397705,
+          "relevant": false
+        },
+        {
+          "rank": 8,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 5,
+          "distance": 0.5577788352966309,
+          "relevant": false
+        },
+        {
+          "rank": 9,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 16,
+          "distance": 0.5615378618240356,
+          "relevant": false
+        },
+        {
+          "rank": 10,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 18,
+          "distance": 0.5674489736557007,
+          "relevant": false
+        }
+      ],
+      "precision_at_k": {
+        "1": 1.0,
+        "3": 0.6666666666666666,
+        "5": 0.4,
+        "10": 0.2
+      },
+      "recall_at_k": {
+        "1": 0.5,
+        "3": 0.5,
+        "5": 0.5,
+        "10": 0.5
+      },
+      "latency_ms": 28.097900000148
+    },
+    {
+      "id": "q19",
+      "question": "What is the carbon-wire loop method and how many loops does it use?",
+      "relevant": [
+        {
+          "paper": "fnimg-01-968363.pdf",
+          "page": 1
+        },
+        {
+          "paper": "fnimg-01-968363.pdf",
+          "page": 2
+        },
+        {
+          "paper": "fnimg-01-968363.pdf",
+          "page": 4
+        },
+        {
+          "paper": "fnimg-01-968363.pdf",
+          "page": 5
+        },
+        {
+          "paper": "fnimg-01-968363.pdf",
+          "page": 6
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 2,
+          "distance": 0.6042855978012085,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 5,
+          "distance": 0.6057420969009399,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 1,
+          "distance": 0.659966230392456,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 17,
+          "distance": 0.6646091341972351,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 1,
+          "distance": 0.6939731240272522,
+          "relevant": true
+        },
+        {
+          "rank": 6,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 4,
+          "distance": 0.698257327079773,
+          "relevant": true
+        },
+        {
+          "rank": 7,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 20,
+          "distance": 0.7011504769325256,
+          "relevant": false
+        },
+        {
+          "rank": 8,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 20,
+          "distance": 0.7026915550231934,
+          "relevant": false
+        },
+        {
+          "rank": 9,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 6,
+          "distance": 0.7116506695747375,
+          "relevant": true
+        },
+        {
+          "rank": 10,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 5,
+          "distance": 0.7157824039459229,
+          "relevant": true
+        }
+      ],
+      "precision_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 0.8,
+        "10": 0.7
+      },
+      "recall_at_k": {
+        "1": 0.2,
+        "3": 0.6,
+        "5": 0.6,
+        "10": 1.0
+      },
+      "latency_ms": 30.406799999809664
+    },
+    {
+      "id": "q20",
+      "question": "Which artifact reduction method best recovered alpha and beta band changes during finger tapping?",
+      "relevant": [
+        {
+          "paper": "fnimg-01-968363.pdf",
+          "page": 1
+        },
+        {
+          "paper": "fnimg-01-968363.pdf",
+          "page": 10
+        },
+        {
+          "paper": "fnimg-01-968363.pdf",
+          "page": 15
+        },
+        {
+          "paper": "fnimg-01-968363.pdf",
+          "page": 18
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 10,
+          "distance": 0.4127686023712158,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 15,
+          "distance": 0.4405360221862793,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 15,
+          "distance": 0.44675445556640625,
+          "relevant": true
+        },
+        {
+          "rank": 4,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 9,
+          "distance": 0.46112680435180664,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 12,
+          "distance": 0.46192967891693115,
+          "relevant": false
+        },
+        {
+          "rank": 6,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 13,
+          "distance": 0.47136807441711426,
+          "relevant": false
+        },
+        {
+          "rank": 7,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 10,
+          "distance": 0.48007768392562866,
+          "relevant": true
+        },
+        {
+          "rank": 8,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 9,
+          "distance": 0.4964442253112793,
+          "relevant": false
+        },
+        {
+          "rank": 9,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 10,
+          "distance": 0.49804067611694336,
+          "relevant": true
+        },
+        {
+          "rank": 10,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 5,
+          "distance": 0.5054198503494263,
+          "relevant": false
+        }
+      ],
+      "precision_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 0.6,
+        "10": 0.5
+      },
+      "recall_at_k": {
+        "1": 0.25,
+        "3": 0.5,
+        "5": 0.5,
+        "10": 0.5
+      },
+      "latency_ms": 31.53880000013487
+    },
+    {
+      "id": "q21",
+      "question": "What do the authors recommend for EEG-fMRI studies where participants must make voluntary movements?",
+      "relevant": [
+        {
+          "paper": "fnimg-01-968363.pdf",
+          "page": 17
+        },
+        {
+          "paper": "fnimg-01-968363.pdf",
+          "page": 18
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 18,
+          "distance": 0.38334959745407104,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 20,
+          "distance": 0.3850688934326172,
+          "relevant": false
+        },
+        {
+          "rank": 3,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 5,
+          "distance": 0.3971554636955261,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 17,
+          "distance": 0.39982813596725464,
+          "relevant": true
+        },
+        {
+          "rank": 5,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 19,
+          "distance": 0.40247154235839844,
+          "relevant": false
+        },
+        {
+          "rank": 6,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 18,
+          "distance": 0.4031418561935425,
+          "relevant": true
+        },
+        {
+          "rank": 7,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 19,
+          "distance": 0.40317732095718384,
+          "relevant": false
+        },
+        {
+          "rank": 8,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 20,
+          "distance": 0.4051973223686218,
+          "relevant": false
+        },
+        {
+          "rank": 9,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 13,
+          "distance": 0.40542566776275635,
+          "relevant": false
+        },
+        {
+          "rank": 10,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 2,
+          "distance": 0.40774208307266235,
+          "relevant": false
+        }
+      ],
+      "precision_at_k": {
+        "1": 1.0,
+        "3": 0.3333333333333333,
+        "5": 0.4,
+        "10": 0.3
+      },
+      "recall_at_k": {
+        "1": 0.5,
+        "3": 0.5,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "latency_ms": 30.060499999990498
+    },
+    {
+      "id": "q22",
+      "question": "Which probabilistic programming language was used to estimate the statistical models?",
+      "relevant": [
+        {
+          "paper": "fnimg-01-968363.pdf",
+          "page": 9
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 9,
+          "distance": 0.4356147050857544,
+          "relevant": true
+        },
+        {
+          "rank": 2,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 9,
+          "distance": 0.4825592041015625,
+          "relevant": true
+        },
+        {
+          "rank": 3,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 19,
+          "distance": 0.5671878457069397,
+          "relevant": false
+        },
+        {
+          "rank": 4,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 1,
+          "distance": 0.5884566307067871,
+          "relevant": false
+        },
+        {
+          "rank": 5,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 7,
+          "distance": 0.6081744432449341,
+          "relevant": false
+        },
+        {
+          "rank": 6,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 8,
+          "distance": 0.6157677173614502,
+          "relevant": false
+        },
+        {
+          "rank": 7,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 9,
+          "distance": 0.62062007188797,
+          "relevant": true
+        },
+        {
+          "rank": 8,
+          "paper": "fnimg-01-968363.pdf",
+          "page": 10,
+          "distance": 0.6268461346626282,
+          "relevant": false
+        },
+        {
+          "rank": 9,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 9,
+          "distance": 0.6289972066879272,
+          "relevant": false
+        },
+        {
+          "rank": 10,
+          "paper": "s41598-024-64445-2.pdf",
+          "page": 2,
+          "distance": 0.6326321959495544,
+          "relevant": false
+        }
+      ],
+      "precision_at_k": {
+        "1": 1.0,
+        "3": 0.6666666666666666,
+        "5": 0.4,
+        "10": 0.3
+      },
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "latency_ms": 40.4859000000215
+    }
+  ]
+}

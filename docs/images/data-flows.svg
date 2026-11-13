@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 610" width="1200" height="610" role="img" aria-labelledby="t d" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+<title id="t">Research Radar data flows</title>
+<desc id="d">Three flows: indexing a paper, asking a question, and evaluating the system.</desc>
+<rect width="1200" height="610" rx="14" fill="#fbfbf9"/>
+<text x="50" y="42" font-size="22" font-weight="bold" fill="#1f2328" text-anchor="start">Research Radar: data flows</text>
+<text x="50" y="80" font-size="15" font-weight="bold" fill="#2a78d6" text-anchor="start">A. Indexing a paper (POST /documents/upload)</text>
+<rect x="50" y="95" width="165" height="92" rx="10" fill="#eaf2fc" stroke="#2a78d6" stroke-width="1.6"/>
+<circle cx="70" cy="115" r="11" fill="#2a78d6"/>
+<text x="70" y="120" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+<text x="88" y="120" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Upload</text>
+<text x="62" y="145" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">PDF sent to the API;</text>
+<text x="62" y="160" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">only .pdf, max 20 MB</text>
+<text x="62" y="175" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">validated first</text>
+<line x1="216" y1="141" x2="229" y2="141" stroke="#2a78d6" stroke-width="2"/>
+<polygon points="228,136 228,146 236,141" fill="#2a78d6"/>
+<rect x="237" y="95" width="165" height="92" rx="10" fill="#eaf2fc" stroke="#2a78d6" stroke-width="1.6"/>
+<circle cx="257" cy="115" r="11" fill="#2a78d6"/>
+<text x="257" y="120" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+<text x="275" y="120" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Extract</text>
+<text x="249" y="145" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">PyMuPDF, page by page</text>
+<text x="249" y="160" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">page numbers kept</text>
+<text x="249" y="175" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">(no OCR for scans)</text>
+<line x1="403" y1="141" x2="416" y2="141" stroke="#2a78d6" stroke-width="2"/>
+<polygon points="415,136 415,146 423,141" fill="#2a78d6"/>
+<rect x="424" y="95" width="165" height="92" rx="10" fill="#eaf2fc" stroke="#2a78d6" stroke-width="1.6"/>
+<circle cx="444" cy="115" r="11" fill="#2a78d6"/>
+<text x="444" y="120" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+<text x="462" y="120" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Chunk</text>
+<text x="436" y="145" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">clean the text, then</text>
+<text x="436" y="160" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">split: 1200 characters,</text>
+<text x="436" y="175" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">200 overlap</text>
+<line x1="590" y1="141" x2="603" y2="141" stroke="#2a78d6" stroke-width="2"/>
+<polygon points="602,136 602,146 610,141" fill="#2a78d6"/>
+<rect x="611" y="95" width="165" height="92" rx="10" fill="#eaf2fc" stroke="#2a78d6" stroke-width="1.6"/>
+<circle cx="631" cy="115" r="11" fill="#2a78d6"/>
+<text x="631" y="120" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+<text x="649" y="120" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Embed</text>
+<text x="623" y="145" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">EmbeddingGemma</text>
+<text x="623" y="160" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">one 768-number vector</text>
+<text x="623" y="175" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">per chunk</text>
+<line x1="777" y1="141" x2="790" y2="141" stroke="#2a78d6" stroke-width="2"/>
+<polygon points="789,136 789,146 797,141" fill="#2a78d6"/>
+<rect x="798" y="95" width="165" height="92" rx="10" fill="#eaf2fc" stroke="#2a78d6" stroke-width="1.6"/>
+<circle cx="818" cy="115" r="11" fill="#2a78d6"/>
+<text x="818" y="120" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">5</text>
+<text x="836" y="120" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Store</text>
+<text x="810" y="145" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">ChromaDB:</text>
+<text x="810" y="160" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">text + vector +</text>
+<text x="810" y="175" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">file, page, chunk index</text>
+<line x1="964" y1="141" x2="977" y2="141" stroke="#2a78d6" stroke-width="2"/>
+<polygon points="976,136 976,146 984,141" fill="#2a78d6"/>
+<rect x="985" y="95" width="165" height="92" rx="10" fill="#eaf2fc" stroke="#2a78d6" stroke-width="1.6"/>
+<circle cx="1005" cy="115" r="11" fill="#2a78d6"/>
+<text x="1005" y="120" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">6</text>
+<text x="1023" y="120" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Record</text>
+<text x="997" y="145" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">SQLite:</text>
+<text x="997" y="160" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">name, pages, chunks,</text>
+<text x="997" y="175" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">status, time</text>
+<text x="50" y="208" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">All embeddings are created before anything is stored; if a later step fails, the saved data is removed,</text>
+<text x="50" y="224" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">so ChromaDB and SQLite never disagree.</text>
+<text x="50" y="268" font-size="15" font-weight="bold" fill="#d9531f" text-anchor="start">B. Asking a question (POST /research/ask)</text>
+<rect x="50" y="283" width="165" height="92" rx="10" fill="#fdeee7" stroke="#d9531f" stroke-width="1.6"/>
+<circle cx="70" cy="303" r="11" fill="#d9531f"/>
+<text x="70" y="308" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+<text x="88" y="308" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Ask</text>
+<text x="62" y="333" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">question in plain</text>
+<text x="62" y="348" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">language; optionally</text>
+<text x="62" y="363" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">choose which papers</text>
+<line x1="216" y1="329" x2="229" y2="329" stroke="#d9531f" stroke-width="2"/>
+<polygon points="228,324 228,334 236,329" fill="#d9531f"/>
+<rect x="237" y="283" width="165" height="92" rx="10" fill="#fdeee7" stroke="#d9531f" stroke-width="1.6"/>
+<circle cx="257" cy="303" r="11" fill="#d9531f"/>
+<text x="257" y="308" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+<text x="275" y="308" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Embed</text>
+<text x="249" y="333" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">same model as the</text>
+<text x="249" y="348" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">documents, so vectors</text>
+<text x="249" y="363" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">are comparable</text>
+<line x1="403" y1="329" x2="416" y2="329" stroke="#d9531f" stroke-width="2"/>
+<polygon points="415,324 415,334 423,329" fill="#d9531f"/>
+<rect x="424" y="283" width="165" height="92" rx="10" fill="#fdeee7" stroke="#d9531f" stroke-width="1.6"/>
+<circle cx="444" cy="303" r="11" fill="#d9531f"/>
+<text x="444" y="308" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+<text x="462" y="308" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Search</text>
+<text x="436" y="333" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">ChromaDB top-K</text>
+<text x="436" y="348" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">(default 5) by cosine</text>
+<text x="436" y="363" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">distance, with pages</text>
+<line x1="590" y1="329" x2="603" y2="329" stroke="#d9531f" stroke-width="2"/>
+<polygon points="602,324 602,334 610,329" fill="#d9531f"/>
+<rect x="611" y="283" width="165" height="92" rx="10" fill="#fdeee7" stroke="#d9531f" stroke-width="1.6"/>
+<circle cx="631" cy="303" r="11" fill="#d9531f"/>
+<text x="631" y="308" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+<text x="649" y="308" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Prompt</text>
+<text x="623" y="333" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">numbered sources with</text>
+<text x="623" y="348" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">file and page; rules:</text>
+<text x="623" y="363" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">use only the sources</text>
+<line x1="777" y1="329" x2="790" y2="329" stroke="#d9531f" stroke-width="2"/>
+<polygon points="789,324 789,334 797,329" fill="#d9531f"/>
+<rect x="798" y="283" width="165" height="92" rx="10" fill="#fdeee7" stroke="#d9531f" stroke-width="1.6"/>
+<circle cx="818" cy="303" r="11" fill="#d9531f"/>
+<text x="818" y="308" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">5</text>
+<text x="836" y="308" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Generate</text>
+<text x="810" y="333" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">qwen3:4b-instruct</text>
+<text x="810" y="348" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">locally via Ollama,</text>
+<text x="810" y="363" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">temperature 0.1</text>
+<line x1="964" y1="329" x2="977" y2="329" stroke="#d9531f" stroke-width="2"/>
+<polygon points="976,324 976,334 984,329" fill="#d9531f"/>
+<rect x="985" y="283" width="165" height="92" rx="10" fill="#fdeee7" stroke="#d9531f" stroke-width="1.6"/>
+<circle cx="1005" cy="303" r="11" fill="#d9531f"/>
+<text x="1005" y="308" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">6</text>
+<text x="1023" y="308" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Verify</text>
+<text x="997" y="333" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">keep only real [n]</text>
+<text x="997" y="348" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">citations; an answer</text>
+<text x="997" y="363" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">without any is refused</text>
+<line x1="1067" y1="375" x2="1067" y2="397" stroke="#d9531f" stroke-width="2"/>
+<polygon points="1062,396 1072,396 1067,404" fill="#d9531f"/>
+<rect x="611" y="404" width="539" height="40" rx="10" fill="#ffffff" stroke="#d9531f" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="623" y="429" font-size="12.5" font-weight="normal" fill="#1f2328" text-anchor="start">Not enough evidence: the reply says so and shows no citations</text>
+<text x="50" y="417" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">Shown to the user: the answer, the verified citations (file, page,</text>
+<text x="50" y="433" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">original text) and all retrieved passages with their distances.</text>
+<text x="50" y="486" font-size="15" font-weight="bold" fill="#0f8a5f" text-anchor="start">C. Evaluation (offline, from the command line)</text>
+<rect x="50" y="501" width="165" height="92" rx="10" fill="#e6f5ee" stroke="#0f8a5f" stroke-width="1.6"/>
+<circle cx="70" cy="521" r="11" fill="#0f8a5f"/>
+<text x="70" y="526" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+<text x="88" y="526" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Benchmark</text>
+<text x="62" y="551" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">3 papers, 26 questions;</text>
+<text x="62" y="566" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">relevant pages labelled,</text>
+<text x="62" y="581" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">checked against the text</text>
+<line x1="216" y1="547" x2="229" y2="547" stroke="#0f8a5f" stroke-width="2"/>
+<polygon points="228,542 228,552 236,547" fill="#0f8a5f"/>
+<rect x="237" y="501" width="165" height="92" rx="10" fill="#e6f5ee" stroke="#0f8a5f" stroke-width="1.6"/>
+<circle cx="257" cy="521" r="11" fill="#0f8a5f"/>
+<text x="257" y="526" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+<text x="275" y="526" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Index</text>
+<text x="249" y="551" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">papers go into a</text>
+<text x="249" y="566" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">temporary store; your</text>
+<text x="249" y="581" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">own documents are safe</text>
+<line x1="403" y1="547" x2="416" y2="547" stroke="#0f8a5f" stroke-width="2"/>
+<polygon points="415,542 415,552 423,547" fill="#0f8a5f"/>
+<rect x="424" y="501" width="165" height="92" rx="10" fill="#e6f5ee" stroke="#0f8a5f" stroke-width="1.6"/>
+<circle cx="444" cy="521" r="11" fill="#0f8a5f"/>
+<text x="444" y="526" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+<text x="462" y="526" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Run</text>
+<text x="436" y="551" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">retrieve (and answer)</text>
+<text x="436" y="566" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">every question and</text>
+<text x="436" y="581" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">time each step</text>
+<line x1="590" y1="547" x2="603" y2="547" stroke="#0f8a5f" stroke-width="2"/>
+<polygon points="602,542 602,552 610,547" fill="#0f8a5f"/>
+<rect x="611" y="501" width="165" height="92" rx="10" fill="#e6f5ee" stroke="#0f8a5f" stroke-width="1.6"/>
+<circle cx="631" cy="521" r="11" fill="#0f8a5f"/>
+<text x="631" y="526" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+<text x="649" y="526" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Measure</text>
+<text x="623" y="551" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">Precision@K, Recall@K,</text>
+<text x="623" y="566" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">latency, citations,</text>
+<text x="623" y="581" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">refusals</text>
+<line x1="777" y1="547" x2="790" y2="547" stroke="#0f8a5f" stroke-width="2"/>
+<polygon points="789,542 789,552 797,547" fill="#0f8a5f"/>
+<rect x="798" y="501" width="165" height="92" rx="10" fill="#e6f5ee" stroke="#0f8a5f" stroke-width="1.6"/>
+<circle cx="818" cy="521" r="11" fill="#0f8a5f"/>
+<text x="818" y="526" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">5</text>
+<text x="836" y="526" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Save</text>
+<text x="810" y="551" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">JSON report in</text>
+<text x="810" y="566" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">evaluation/results/</text>
+<text x="810" y="581" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">(kept in git)</text>
+<line x1="964" y1="547" x2="977" y2="547" stroke="#0f8a5f" stroke-width="2"/>
+<polygon points="976,542 976,552 984,547" fill="#0f8a5f"/>
+<rect x="985" y="501" width="165" height="92" rx="10" fill="#e6f5ee" stroke="#0f8a5f" stroke-width="1.6"/>
+<circle cx="1005" cy="521" r="11" fill="#0f8a5f"/>
+<text x="1005" y="526" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">6</text>
+<text x="1023" y="526" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Show</text>
+<text x="997" y="551" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">Evaluation page:</text>
+<text x="997" y="566" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">charts, failure cases,</text>
+<text x="997" y="581" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">answers side by side</text>
+</svg>

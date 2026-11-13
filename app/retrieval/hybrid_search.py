@@ -1,1 +1,0 @@
-# Combines semantic search and keyword search (BM25) to provide a hybrid search approach. This allows for more accurate and relevant search results by leveraging both semantic understanding and traditional keyword matching.
