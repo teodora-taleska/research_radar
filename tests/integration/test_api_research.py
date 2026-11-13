@@ -81,7 +81,10 @@ def _upload(client, pdf_bytes, filename="trial.pdf"):
 
 def test_upload_then_ask_returns_cited_answer(store, repository):
     client = _install(store, repository, FakeLLM("Patients were randomised [1]."))
-    _upload(client, _pdf("Introduction to self attention.", "The patients were randomised."))
+    _upload(
+        client,
+        _pdf("Introduction to self attention.", "The patients were randomised."),
+    )
 
     response = client.post(
         "/research/ask",

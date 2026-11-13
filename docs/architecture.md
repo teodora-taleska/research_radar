@@ -48,6 +48,8 @@ and returns document metadata and chunk previews.
 
 ## System Architecture
 
+![Architecture](images/architecture.svg)
+
 Research Radar keeps each responsibility in its own module so components
 can be replaced independently (for example Ollama by a hosted provider).
 
@@ -63,6 +65,8 @@ can be replaced independently (for example Ollama by a hosted provider).
 | Generation | `app/generation/` | `LLMProvider` interface, prompts, citation-verified answers |
 | Metadata | `app/database/` | SQLAlchemy and SQLite document records |
 | Evaluation | `evaluation/` | Benchmark, Precision@K, Recall@K, latency |
+
+![Data flows](images/data-flows.svg)
 
 ### Indexing flow (POST /documents/upload)
 

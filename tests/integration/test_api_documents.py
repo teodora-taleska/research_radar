@@ -98,7 +98,8 @@ def test_list_documents_is_empty_initially(client):
 
 
 def test_uploaded_document_appears_in_list_and_detail(client, sample_pdf_bytes):
-    document_id = _upload(client, sample_pdf_bytes, "my_paper.pdf").json()["document_id"]
+    uploaded = _upload(client, sample_pdf_bytes, "my_paper.pdf")
+    document_id = uploaded.json()["document_id"]
 
     listing = client.get("/documents").json()
     detail = client.get(f"/documents/{document_id}")

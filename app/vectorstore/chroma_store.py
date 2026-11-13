@@ -188,7 +188,7 @@ class ChromaDocumentStore:
         distances = results["distances"][0]
 
         for chunk_id, content, meta, distance in zip(
-            ids, documents, metadatas, distances
+            ids, documents, metadatas, distances, strict=True
         ):
             chunks.append(
                 StoredChunk(
