@@ -1,4 +1,4 @@
-"""Integration tests for the document upload API."""
+"""Integration tests for the document upload and management API."""
 
 import pytest
 from fastapi.testclient import TestClient
@@ -29,9 +29,9 @@ def store(tmp_path):
 
 
 @pytest.fixture
-def client(store):
+def client(store, repository):
     app.dependency_overrides[get_document_service] = lambda: DocumentService(
-        FakeEmbeddingProvider(), store
+        FakeEmbeddingProvider(), store, repository
     )
     yield TestClient(app)
     app.dependency_overrides.clear()
@@ -59,9 +59,9 @@ def test_upload_pdf_successfully_and_indexes_chunks(client, store, sample_pdf_by
     assert store.count() == result["chunk_count"]
 
 
-def test_upload_returns_503_when_embedding_fails(store, sample_pdf_bytes):
+def test_upload_returns_503_when_embedding_fails(store, repository, sample_pdf_bytes):
     app.dependency_overrides[get_document_service] = lambda: DocumentService(
-        FakeEmbeddingProvider(fail=True), store
+        FakeEmbeddingProvider(fail=True), store, repository
     )
     try:
         response = _upload(TestClient(app), sample_pdf_bytes)
@@ -70,6 +70,7 @@ def test_upload_returns_503_when_embedding_fails(store, sample_pdf_bytes):
 
     assert response.status_code == 503
     assert store.count() == 0
+    assert repository.list_all() == []
 
 
 def test_upload_rejects_non_pdf(client):
@@ -81,8 +82,49 @@ def test_upload_rejects_non_pdf(client):
     assert response.status_code == 415
 
 
-def test_upload_rejects_invalid_pdf(client, store):
+def test_upload_rejects_invalid_pdf(client, store, repository):
     response = _upload(client, b"This is not a PDF.", "invalid.pdf")
 
     assert response.status_code == 422
     assert store.count() == 0
+    assert repository.list_all() == []
+
+
+def test_list_documents_is_empty_initially(client):
+    response = client.get("/documents")
+
+    assert response.status_code == 200
+    assert response.json() == []
+
+
+def test_uploaded_document_appears_in_list_and_detail(client, sample_pdf_bytes):
+    document_id = _upload(client, sample_pdf_bytes, "my_paper.pdf").json()["document_id"]
+
+    listing = client.get("/documents").json()
+    detail = client.get(f"/documents/{document_id}")
+
+    assert [d["document_id"] for d in listing] == [document_id]
+    assert listing[0]["filename"] == "my_paper.pdf"
+    assert listing[0]["status"] == "indexed"
+    assert listing[0]["created_at"]
+    assert detail.status_code == 200
+    assert detail.json()["page_count"] == 1
+
+
+def test_get_unknown_document_returns_404(client):
+    assert client.get("/documents/ghost").status_code == 404
+
+
+def test_delete_removes_document_and_vectors(client, store, sample_pdf_bytes):
+    document_id = _upload(client, sample_pdf_bytes).json()["document_id"]
+
+    response = client.delete(f"/documents/{document_id}")
+
+    assert response.status_code == 204
+    assert client.get("/documents").json() == []
+    assert client.get(f"/documents/{document_id}").status_code == 404
+    assert store.document_exists(document_id) is False
+
+
+def test_delete_unknown_document_returns_404(client):
+    assert client.delete("/documents/ghost").status_code == 404

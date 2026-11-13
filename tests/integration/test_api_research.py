@@ -44,10 +44,10 @@ def store(tmp_path):
     return ChromaDocumentStore(persist_directory=tmp_path / "chroma")
 
 
-def _install(store, llm):
+def _install(store, repository, llm):
     embedder = KeywordEmbedder()
     app.dependency_overrides[get_document_service] = lambda: DocumentService(
-        embedder, store
+        embedder, store, repository
     )
     app.dependency_overrides[get_research_service] = lambda: ResearchService(
         Retriever(embedder, store), AnswerGenerator(llm)
@@ -79,8 +79,8 @@ def _upload(client, pdf_bytes, filename="trial.pdf"):
     return response.json()["document_id"]
 
 
-def test_upload_then_ask_returns_cited_answer(store):
-    client = _install(store, FakeLLM("Patients were randomised [1]."))
+def test_upload_then_ask_returns_cited_answer(store, repository):
+    client = _install(store, repository, FakeLLM("Patients were randomised [1]."))
     _upload(client, _pdf("Introduction to self attention.", "The patients were randomised."))
 
     response = client.post(
@@ -99,8 +99,8 @@ def test_upload_then_ask_returns_cited_answer(store):
     assert len(body["retrieved_passages"]) == 2
 
 
-def test_ask_with_no_documents_reports_insufficient_evidence(store):
-    client = _install(store, FakeLLM("should not be called"))
+def test_ask_with_no_documents_reports_insufficient_evidence(store, repository):
+    client = _install(store, repository, FakeLLM("should not be called"))
 
     response = client.post("/research/ask", json={"question": "Anything?"})
 
@@ -111,8 +111,8 @@ def test_ask_with_no_documents_reports_insufficient_evidence(store):
     assert body["retrieved_passages"] == []
 
 
-def test_model_refusal_is_reported(store):
-    client = _install(store, FakeLLM(INSUFFICIENT_EVIDENCE_MARKER))
+def test_model_refusal_is_reported(store, repository):
+    client = _install(store, repository, FakeLLM(INSUFFICIENT_EVIDENCE_MARKER))
     _upload(client, _pdf("The patients were randomised."))
 
     body = client.post("/research/ask", json={"question": "Capital of France?"}).json()
@@ -122,8 +122,8 @@ def test_model_refusal_is_reported(store):
     assert body["retrieved_passages"]
 
 
-def test_ask_can_be_restricted_to_documents(store):
-    client = _install(store, FakeLLM("Answer [1]."))
+def test_ask_can_be_restricted_to_documents(store, repository):
+    client = _install(store, repository, FakeLLM("Answer [1]."))
     _upload(client, _pdf("patients in study one"), "one.pdf")
     second = _upload(client, _pdf("patients in study two"), "two.pdf")
 
@@ -135,8 +135,8 @@ def test_ask_can_be_restricted_to_documents(store):
     assert {p["filename"] for p in body["retrieved_passages"]} == {"two.pdf"}
 
 
-def test_llm_failure_returns_503(store):
-    client = _install(store, FakeLLM(error=LLMProviderError("Ollama down")))
+def test_llm_failure_returns_503(store, repository):
+    client = _install(store, repository, FakeLLM(error=LLMProviderError("Ollama down")))
     _upload(client, _pdf("The patients were randomised."))
 
     response = client.post("/research/ask", json={"question": "patients?"})
@@ -154,7 +154,7 @@ def test_llm_failure_returns_503(store):
         {},
     ],
 )
-def test_invalid_requests_return_422(store, payload):
-    client = _install(store, FakeLLM())
+def test_invalid_requests_return_422(store, repository, payload):
+    client = _install(store, repository, FakeLLM())
 
     assert client.post("/research/ask", json=payload).status_code == 422

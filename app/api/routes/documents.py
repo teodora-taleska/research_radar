@@ -6,10 +6,12 @@ from pathlib import Path
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status
 
 from app.api.dependencies import get_document_service
+from app.core.exceptions import DocumentNotFoundError
 from app.embeddings.provider import EmbeddingProviderError
 from app.ingestion.pipeline import process_pdf
 from app.schemas.document import (
     ChunkPreview,
+    DocumentSummary,
     DocumentUploadResponse,
 )
 from app.services.document_service import DocumentService
@@ -99,3 +101,58 @@ async def upload_document(
 
     finally:
         await file.close()
+
+
+@router.get(
+    "",
+    response_model=list[DocumentSummary],
+    summary="List uploaded documents",
+)
+def list_documents(
+    service: DocumentService = Depends(get_document_service),
+) -> list[DocumentSummary]:
+    """Return all uploaded documents, newest first."""
+    return service.list_documents()
+
+
+@router.get(
+    "/{document_id}",
+    response_model=DocumentSummary,
+    summary="Get one uploaded document",
+)
+def get_document(
+    document_id: str,
+    service: DocumentService = Depends(get_document_service),
+) -> DocumentSummary:
+    """Return metadata for a single document."""
+    try:
+        return service.get_document(document_id)
+    except DocumentNotFoundError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(exc),
+        ) from exc
+
+
+@router.delete(
+    "/{document_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+    summary="Delete a document and its indexed vectors",
+)
+def delete_document(
+    document_id: str,
+    service: DocumentService = Depends(get_document_service),
+) -> None:
+    """Remove a document from the vector store and the database."""
+    try:
+        service.delete_document(document_id)
+    except DocumentNotFoundError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(exc),
+        ) from exc
+    except ChromaStoreError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=f"Document could not be deleted: {exc}",
+        ) from exc

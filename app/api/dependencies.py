@@ -2,6 +2,8 @@
 
 from functools import lru_cache
 
+from app.database.connection import create_db_engine, create_session_factory
+from app.database.repositories import DocumentRepository
 from app.embeddings.provider import OllamaEmbeddingProvider
 from app.generation.answer_generator import AnswerGenerator
 from app.generation.llm_provider import OllamaLLMProvider
@@ -24,11 +26,18 @@ def get_vector_store() -> ChromaDocumentStore:
 
 
 @lru_cache
+def get_document_repository() -> DocumentRepository:
+    """Return the shared document metadata repository."""
+    return DocumentRepository(create_session_factory(create_db_engine()))
+
+
+@lru_cache
 def get_document_service() -> DocumentService:
-    """Return the application-wide document indexing service."""
+    """Return the application-wide document service."""
     return DocumentService(
         embedding_provider=get_embedding_provider(),
         store=get_vector_store(),
+        repository=get_document_repository(),
     )
 
 

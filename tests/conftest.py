@@ -19,3 +19,14 @@ def sample_pdf_bytes():
     document.close()
 
     return pdf_bytes
+
+
+@pytest.fixture
+def repository(tmp_path):
+    """Document metadata repository backed by a temporary SQLite file."""
+    from app.database.connection import create_db_engine, create_session_factory
+    from app.database.repositories import DocumentRepository
+
+    engine = create_db_engine(f"sqlite:///{(tmp_path / 'test.db').as_posix()}")
+    yield DocumentRepository(create_session_factory(engine))
+    engine.dispose()
