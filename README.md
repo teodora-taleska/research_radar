@@ -173,12 +173,16 @@ The tests use fake models and run without Ollama.
 
 ## Roadmap (version 2)
 
+Not implemented yet. The detailed plan, with where each feature would live in
+the code, is in [docs/roadmap.md](docs/roadmap.md).
+
 - Paper Explorer (structured summaries) and Paper Comparison pages.
 - Saved conversations and follow-up questions.
 - PostgreSQL with migrations; hybrid search (BM25) and reranking.
+- Better refusal of unanswerable questions.
 - Public hosted demo with a hosted model provider; optional containerised Ollama.
 - OCR for scanned PDFs; larger benchmark with more metrics (MRR, nDCG);
-  chunk-size and embedding-model comparisons.
+  chunk-size and embedding-model comparisons; continuous integration.
 
 ## Documentation
 
@@ -188,6 +192,7 @@ The tests use fake models and run without Ollama.
 - [docs/experiments.md](docs/experiments.md): experiments and results
 - [docs/development.md](docs/development.md): setup, configuration, Docker
 - [docs/demo_script.md](docs/demo_script.md): demo video script
+- [docs/roadmap.md](docs/roadmap.md): version 2 plan (features not built yet)
 
 ## License
 
