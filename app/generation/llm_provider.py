@@ -44,7 +44,7 @@ class OllamaLLMProvider:
         temperature: float = 0.1,
         client: ollama.Client | None = None,
     ) -> None:
-        self.model = model or os.getenv("OLLAMA_LLM_MODEL", "qwen3:4b")
+        self.model = model or os.getenv("OLLAMA_LLM_MODEL", "qwen3:4b-instruct")
 
         if not self.model.strip():
             raise ValueError("LLM model name cannot be empty.")

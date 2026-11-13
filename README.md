@@ -57,7 +57,7 @@ conda create -n research_radar python=3.11
 conda activate research_radar
 pip install -r requirements.txt
 ollama pull embeddinggemma
-ollama pull qwen3:4b
+ollama pull qwen3:4b-instruct
 ```
 
 ## Running

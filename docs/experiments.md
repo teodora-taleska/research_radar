@@ -140,6 +140,13 @@ Findings:
   about the same topic (q24, q25) retrieved passages as close as answerable
   ones, so a distance cut-off would not replace the model's refusal.
 
+Decision: the default model is now `qwen3:4b-instruct`. It is about 9 times
+faster, matches `qwen3:4b` on every automatic metric, and the one clearly
+wrong answer in this run came from `qwen3:4b`. This was decided before the
+manual faithfulness scores were entered, so it rests on speed, the automatic
+metrics and the answers inspected. The scores can confirm or overturn it
+(`OLLAMA_LLM_MODEL=qwen3:4b` restores the previous model).
+
 Caveats: 4 unanswerable questions, 22 answerable questions, one run per
 model, one machine. Differences of one question are not meaningful.
 

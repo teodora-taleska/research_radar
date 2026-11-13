@@ -12,7 +12,7 @@ Install [Ollama](https://ollama.com) and download the models:
 
 ```powershell
 ollama pull embeddinggemma
-ollama pull qwen3:4b
+ollama pull qwen3:4b-instruct
 ```
 
 ## Run
@@ -38,7 +38,7 @@ All settings are environment variables with defaults.
 |---|---|---|
 | `OLLAMA_HOST` | Ollama default | Ollama server address |
 | `OLLAMA_EMBEDDING_MODEL` | `embeddinggemma` | Embedding model |
-| `OLLAMA_LLM_MODEL` | `qwen3:4b` | Generative model |
+| `OLLAMA_LLM_MODEL` | `qwen3:4b-instruct` | Generative model |
 | `CHROMA_PERSIST_DIR` | `./data/chroma` | Vector database folder |
 | `DATABASE_URL` | `sqlite:///./data/research_radar.db` | Metadata database |
 | `RESEARCH_RADAR_API_URL` | `http://127.0.0.1:8000` | Backend address used by the frontend |

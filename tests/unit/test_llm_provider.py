@@ -100,6 +100,12 @@ def test_rejects_empty_model_name(mock_client):
         OllamaLLMProvider(model="  ", client=mock_client)
 
 
+def test_model_defaults_to_the_instruct_variant(monkeypatch, mock_client):
+    monkeypatch.delenv("OLLAMA_LLM_MODEL", raising=False)
+
+    assert OllamaLLMProvider(client=mock_client).model == "qwen3:4b-instruct"
+
+
 def test_model_defaults_to_environment_variable(monkeypatch, mock_client):
     monkeypatch.setenv("OLLAMA_LLM_MODEL", "qwen3:8b")
 
