@@ -3,13 +3,17 @@
 
 from pathlib import Path
 
-from fastapi import APIRouter, File, HTTPException, UploadFile, status
+from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status
 
+from app.api.dependencies import get_document_service
+from app.embeddings.provider import EmbeddingProviderError
 from app.ingestion.pipeline import process_pdf
 from app.schemas.document import (
     ChunkPreview,
     DocumentUploadResponse,
 )
+from app.services.document_service import DocumentService
+from app.vectorstore.chroma_store import ChromaStoreError
 
 router = APIRouter(
     prefix="/documents",
@@ -23,16 +27,17 @@ MAX_UPLOAD_SIZE_BYTES = 20 * 1024 * 1024
     "/upload",
     response_model=DocumentUploadResponse,
     status_code=status.HTTP_201_CREATED,
-    summary="Upload and process a scientific PDF",
+    summary="Upload, process and index a scientific PDF",
     description=(
-        "Extracts PDF text, cleans it, and divides it into "
-        "page-aware text chunks."
+        "Extracts PDF text, cleans it, divides it into page-aware "
+        "chunks, then embeds and stores the chunks for retrieval."
     ),
 )
 async def upload_document(
     file: UploadFile = File(...),
+    service: DocumentService = Depends(get_document_service),
 ) -> DocumentUploadResponse:
-    """Receive a PDF and run the document ingestion pipeline."""
+    """Receive a PDF, run the ingestion pipeline and index the chunks."""
     if not file.filename or Path(file.filename).suffix.lower() != ".pdf":
         raise HTTPException(
             status_code=status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
@@ -65,6 +70,14 @@ async def upload_document(
                 detail=str(exc),
             ) from exc
 
+        try:
+            service.index_document(document)
+        except (EmbeddingProviderError, ChromaStoreError) as exc:
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                detail=f"Document could not be indexed: {exc}",
+            ) from exc
+
         chunk_previews = [
             ChunkPreview(
                 chunk_index=chunk.chunk_index,
@@ -80,6 +93,7 @@ async def upload_document(
             filename=document.filename,
             page_count=document.page_count,
             chunk_count=len(document.chunks),
+            status="indexed",
             chunks=chunk_previews,
         )
 

@@ -54,6 +54,28 @@ class TestAddChunks:
 
 
 # ---------------------------------------------------------------------------
+# persistence
+# ---------------------------------------------------------------------------
+
+class TestPersistence:
+    def test_data_survives_reopening_the_store(self, tmp_path):
+        directory = tmp_path / "chroma"
+        first = ChromaDocumentStore(persist_directory=directory)
+        first.add_chunks("doc1", "paper.pdf", _make_chunks(3), _make_embeddings(3))
+        del first
+
+        reopened = ChromaDocumentStore(persist_directory=directory)
+
+        assert reopened.count() == 3
+        assert reopened.document_exists("doc1") is True
+        results = reopened.search([0.1, 0.2, 0.3, 0.4], top_k=1)
+        assert results[0].filename == "paper.pdf"
+
+    def test_search_on_empty_store_returns_empty_list(self, store):
+        assert store.search([0.1, 0.2, 0.3, 0.4], top_k=3) == []
+
+
+# ---------------------------------------------------------------------------
 # document_exists
 # ---------------------------------------------------------------------------
 
