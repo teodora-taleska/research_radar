@@ -2,6 +2,15 @@
 
 **Scan research. Discover evidence. Save time.**
 
+![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=white)
+![Ollama](https://img.shields.io/badge/Ollama-local%20models-000000?logo=ollama&logoColor=white)
+![ChromaDB](https://img.shields.io/badge/ChromaDB-vector%20store-FF6446)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
+[![License](https://img.shields.io/github/license/teodora-taleska/research_radar)](LICENSE)
+
 Research Radar lets you upload scientific PDFs, ask questions in plain
 language, and get answers grounded in your papers, with the document and page
 for every claim. When the papers do not contain the answer, it says so instead
