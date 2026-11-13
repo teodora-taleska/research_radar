@@ -10,10 +10,13 @@ of guessing.
 Everything runs locally: your documents, the embeddings and the language
 model stay on your computer (Ollama, ChromaDB, SQLite). No API keys, no cloud.
 
-## Demo
+## Use case
 
-Demo video: *link to be added*. The script is in
-[docs/demo_script.md](docs/demo_script.md).
+A student, researcher or analyst with a few PDFs and specific questions (which
+dataset, how many patients, what are the limitations) gets answers with the
+page as proof, without reading every paper in full. What **Index papers** does,
+which questions work well and how to read the citations:
+[docs/use_case.md](docs/use_case.md).
 
 ## How it works
 
@@ -78,17 +81,38 @@ treat the numbers as indicative.
 
 ## Quick start
 
-Requires Python 3.11 and [Ollama](https://ollama.com).
+Requires Python 3.11 and [Ollama](https://ollama.com). Get the code:
+
+```powershell
+git clone https://github.com/teodora-taleska/research_radar.git
+cd research_radar
+```
+
+Create a Python 3.11 environment and install the dependencies. With conda:
 
 ```powershell
 conda create -n research_radar python=3.11
 conda activate research_radar
 pip install -r requirements.txt
+```
+
+Without conda, any Python 3.11 virtual environment works:
+`python -m venv .venv`, activate it (`.venv\Scripts\activate` on Windows,
+`source .venv/bin/activate` on macOS and Linux), then
+`pip install -r requirements.txt`.
+
+Download the two models (about 3 GB, once):
+
+```powershell
 ollama pull embeddinggemma
 ollama pull qwen3:4b-instruct
 ```
 
-Start the backend and the frontend in two terminals:
+Ollama must be running while you use the app. `ollama list` shows the
+downloaded models and fails if Ollama is not running; in that case start the
+Ollama app, or run `ollama serve`.
+
+Start the backend and the frontend in two terminals from the project folder:
 
 ```powershell
 uvicorn app.api.main:app --reload
@@ -99,23 +123,31 @@ streamlit run frontend/Home.py
 ```
 
 Open http://localhost:8501, choose **Research Assistant**, upload PDFs, click
-**Index papers**, and ask a question. API documentation is at
+**Index papers**, and ask a question. New here? [docs/use_case.md](docs/use_case.md)
+explains each step and what to ask. API documentation is at
 http://127.0.0.1:8000/docs. All settings are environment variables, listed in
 [docs/development.md](docs/development.md).
 
 ### With Docker
 
-Docker runs the API and the frontend; Ollama keeps running on your computer
-with the two models downloaded. With Docker Desktop running:
+Docker runs the API and the frontend. You need no Python environment, but you
+do need these three things before the first start:
+
+1. **Docker Desktop**, running (it needs a few GB of free memory).
+2. **Ollama**, installed and running on your computer.
+3. **The two models downloaded** once: `ollama pull embeddinggemma` and
+   `ollama pull qwen3:4b-instruct`. Docker does not include them.
+
+Then, in the project folder:
 
 ```powershell
 docker compose up --build
 ```
 
-Then open http://localhost:8501. Uploaded documents are kept in a Docker
-volume. Docker Desktop needs a few GB of free memory. See
-[docs/development.md](docs/development.md) for ports, settings and running the
-evaluation in a container.
+Open http://localhost:8501. Uploaded documents are kept in a Docker volume. If a
+copy started without Docker is still running, stop it first (or use other
+ports). See [docs/development.md](docs/development.md) for ports, settings and
+running the evaluation in a container.
 
 ## Evaluation
 
@@ -186,12 +218,12 @@ the code, is in [docs/roadmap.md](docs/roadmap.md).
 
 ## Documentation
 
+- [docs/use_case.md](docs/use_case.md): why and how to use it, what to ask
 - [docs/architecture.md](docs/architecture.md): components and data flows
 - [docs/api.md](docs/api.md): REST endpoints
 - [docs/methodology.md](docs/methodology.md): methods and evaluation
 - [docs/experiments.md](docs/experiments.md): experiments and results
 - [docs/development.md](docs/development.md): setup, configuration, Docker
-- [docs/demo_script.md](docs/demo_script.md): demo video script
 - [docs/roadmap.md](docs/roadmap.md): version 2 plan (features not built yet)
 
 ## License

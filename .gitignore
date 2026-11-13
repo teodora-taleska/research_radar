@@ -225,3 +225,6 @@ data/
 
 # Retrieval benchmark papers (not redistributed)
 evaluation/datasets/papers/
+
+# Personal script for the demo video (kept locally)
+docs/demo_script.md
