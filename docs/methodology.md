@@ -60,3 +60,60 @@ requests when processing document chunks.
 - The embedding model must be downloaded before use.
 - Document and query embeddings must use the same model
   and compatible embedding configuration.
+
+
+## 3.2 Vector storage
+
+Chunks are stored in one persistent ChromaDB collection configured for
+cosine distance. Each entry keeps the chunk text, its embedding and the
+metadata needed for citations: document id, filename, page number and
+chunk index. Search returns the stored text and metadata together with the
+cosine distance (0 is identical; lower means closer).
+
+## 4. Evidence-grounded answer generation
+
+The retrieved chunks are given to the language model as numbered sources
+with their document name and page. The system prompt requires the model to
+use only those sources, to cite every statement as `[n]`, and to reply with
+a fixed marker when the sources are not sufficient.
+
+The model output is not trusted for citations. After generation:
+
+- citation numbers that do not match a supplied source are discarded;
+- an answer with no valid citation is rejected;
+- a refusal marker, or an empty retrieval, produces an explicit
+  insufficient-evidence result.
+
+So every citation shown to the user refers to a passage that was actually
+retrieved. This verifies that a citation exists, not that the claim is
+faithful to it. Faithfulness is assessed separately (manual scoring in the
+planned LLM comparison experiment).
+
+Reasoning models such as Qwen3 may emit chain-of-thought text. The LLM
+provider strips it, so only the final answer reaches the user.
+
+Generation uses a low temperature (0.1) to favour consistent, factual
+answers.
+
+## 5. Retrieval evaluation
+
+Retrieval is evaluated on a labelled benchmark (see
+`evaluation/datasets/README.md`). Relevance is labelled per paper page, and
+a retrieved passage is relevant if its (paper, page) is labelled relevant.
+
+| Metric | Definition |
+|---|---|
+| Precision@K | Relevant passages in the top K divided by K |
+| Recall@K | Labelled relevant pages found in the top K divided by the number of labelled pages |
+| Latency | Time to embed the question and search: mean, median and 95th percentile |
+
+Unanswerable questions are excluded from these metrics and reserved for
+refusal testing.
+
+Limitations of the method:
+
+- Page-level relevance is lenient: a passage from a relevant page counts
+  even if it is not the sentence containing the answer.
+- With one relevant page per question, Precision@K cannot exceed 1/K.
+- Results depend on the size and difficulty of the benchmark.
+- MRR and nDCG are not reported yet.
