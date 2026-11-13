@@ -18,6 +18,9 @@ values, papers), summary metrics, and for every question the retrieved
 pages with their distances. Questions with no relevant page in the top K
 are reported as failure cases.
 
+The same command run inside the Docker container reproduced the identical
+Precision@K and Recall@K values (latency differed slightly).
+
 Parameters can be varied from the command line, for example
 `--chunk-size 800 --chunk-overlap 100`.
 

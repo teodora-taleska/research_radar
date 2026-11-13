@@ -27,9 +27,11 @@ This is the first working version (MVP).
 | Research Assistant page (Streamlit) | Done |
 | Retrieval evaluation engine (Precision@K, Recall@K, latency) | Done |
 | Evaluation page with retrieval metrics and LLM comparison | Done |
-| Docker, hosted demo with Groq, architecture diagram | Planned |
+| Docker Compose (API and frontend, Ollama on the host) | Done |
+| Architecture diagram and demo video | In progress |
 | Paper Explorer and Paper Comparison pages | Version 2 |
 | Saved conversations, follow-up questions, PostgreSQL, hybrid search, reranking | Version 2 |
+| Public hosted demo with a hosted model provider | Version 2 |
 
 ## How it works
 
@@ -76,6 +78,19 @@ Open http://localhost:8501, choose **Research Assistant**, upload PDFs, click
 **Index papers**, and ask a question. API documentation is at
 http://127.0.0.1:8000/docs. Configuration options are listed in
 [docs/development.md](docs/development.md).
+
+### With Docker
+
+Docker runs the API and the frontend; Ollama keeps running on your computer
+(with the two models downloaded). With Docker Desktop running:
+
+```powershell
+docker compose up --build
+```
+
+Then open http://localhost:8501. Uploaded documents are kept in a Docker
+volume. See [docs/development.md](docs/development.md) for ports, settings
+and running the evaluation in a container.
 
 ## Running tests
 

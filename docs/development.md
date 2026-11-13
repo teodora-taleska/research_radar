@@ -30,6 +30,52 @@ streamlit run frontend/Home.py
 API documentation: http://127.0.0.1:8000/docs
 Application: http://localhost:8501
 
+## Run with Docker
+
+Docker runs the API and the frontend in containers. Ollama is not in a
+container: it keeps running on your computer, where the models are already
+downloaded and the GPU is available. The containers reach it through
+`host.docker.internal`.
+
+1. Install and start Docker Desktop, and start Ollama with the two models
+   downloaded (see Setup).
+2. From the project root:
+
+```powershell
+docker compose up --build
+```
+
+3. Open http://localhost:8501 (application) or http://localhost:8000/docs (API).
+
+Uploaded documents and the database are kept in the Docker volume
+`research_radar_data`, so they survive `docker compose down` and restarts.
+`docker compose down -v` deletes them. The `evaluation/` folder is mounted
+into the containers, so benchmark papers and results are shared with the host.
+
+Docker builds the files of the folder you run it in, whatever branch is
+checked out there, and the image contains a copy of the code from build time.
+After changing code, run `docker compose up --build` again.
+
+If you already run the application without Docker (ports 8000 and 8501 in
+use), start the containers on other ports:
+
+```powershell
+$env:API_PORT = "18000"; $env:FRONTEND_PORT = "18501"; docker compose up --build
+```
+
+Other settings can be overridden the same way, for example
+`$env:OLLAMA_LLM_MODEL = "qwen3:4b"`.
+
+On Linux, Ollama must listen on all interfaces so the containers can reach
+it: set `OLLAMA_HOST=0.0.0.0` for the Ollama service on the host.
+
+Run the evaluation scripts inside the container (benchmark papers must be in
+`evaluation/datasets/papers/`):
+
+```powershell
+docker compose run --rm api python -m evaluation.run_evaluation
+```
+
 ## Configuration
 
 All settings are environment variables with defaults.
