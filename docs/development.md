@@ -2,6 +2,15 @@
 
 ## Setup
 
+Get the code first:
+
+```powershell
+git clone https://github.com/teodora-taleska/research_radar.git
+cd research_radar
+```
+
+Then create the environment (a plain Python 3.11 virtual environment works too):
+
 ```powershell
 conda create -n research_radar python=3.11
 conda activate research_radar
@@ -36,6 +45,11 @@ Docker runs the API and the frontend in containers. Ollama is not in a
 container: it keeps running on your computer, where the models are already
 downloaded and the GPU is available. The containers reach it through
 `host.docker.internal`.
+
+Docker only needs three things, and no Python environment: Docker Desktop
+running, Ollama running on the host, and the two models downloaded once
+(`ollama pull embeddinggemma`, `ollama pull qwen3:4b-instruct`). A copy of the
+app started without Docker must not be using ports 8000 and 8501.
 
 1. Install and start Docker Desktop, and start Ollama with the two models
    downloaded (see Setup).
