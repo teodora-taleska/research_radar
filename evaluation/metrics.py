@@ -47,12 +47,12 @@ def recall_at_k(
     return len(found) / len(relevant_set)
 
 
-def summarize_latencies(latencies_ms: Sequence[float]) -> dict[str, float]:
+def summarize_values(values: Sequence[float]) -> dict[str, float]:
     """Return mean, median, 95th percentile (nearest rank), min and max."""
-    if not latencies_ms:
-        raise ValueError("At least one latency value is required.")
+    if not values:
+        raise ValueError("At least one value is required.")
 
-    ordered = sorted(latencies_ms)
+    ordered = sorted(values)
     p95_index = math.ceil(0.95 * len(ordered)) - 1
 
     return {
@@ -62,3 +62,8 @@ def summarize_latencies(latencies_ms: Sequence[float]) -> dict[str, float]:
         "min": ordered[0],
         "max": ordered[-1],
     }
+
+
+def summarize_latencies(latencies: Sequence[float]) -> dict[str, float]:
+    """Summarise latency measurements in whatever unit they were given."""
+    return summarize_values(latencies)

@@ -26,7 +26,7 @@ This is the first working version (MVP).
 | Document records, listing and deletion (SQLite) | Done |
 | Research Assistant page (Streamlit) | Done |
 | Retrieval evaluation engine (Precision@K, Recall@K, latency) | Done |
-| Evaluation dashboard page and LLM comparison | In progress |
+| Evaluation page with retrieval metrics and LLM comparison | Done |
 | Docker, hosted demo with Groq, architecture diagram | Planned |
 | Paper Explorer and Paper Comparison pages | Version 2 |
 | Saved conversations, follow-up questions, PostgreSQL, hybrid search, reranking | Version 2 |
@@ -94,7 +94,15 @@ Retrieval quality is measured on a labelled benchmark of papers and questions
 python -m evaluation.run_evaluation
 ```
 
-How to prepare the benchmark: [evaluation/datasets/README.md](evaluation/datasets/README.md).
+Two language models can be compared on the same questions (speed, citations,
+refusing unanswerable questions, and a manual faithfulness score):
+
+```powershell
+python -m evaluation.experiments.llm_comparison
+```
+
+Results are shown on the **Evaluation** page of the app. How to prepare the
+benchmark: [evaluation/datasets/README.md](evaluation/datasets/README.md).
 Method and results: [docs/methodology.md](docs/methodology.md) and
 [docs/experiments.md](docs/experiments.md).
 

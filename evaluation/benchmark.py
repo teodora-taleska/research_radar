@@ -19,8 +19,9 @@ answerable question lists the paper pages that contain its answer:
       ]
     }
 
-Answerable questions may also carry an optional "expected_answer" string,
-which is ignored here.
+Answerable questions may also carry an optional "expected_answer" string.
+The retrieval metrics ignore it; the LLM comparison shows it next to the
+generated answers.
 
 Page numbers are one-based PDF page indexes (the page counter of a PDF
 viewer), not the page numbers printed on the paper.
@@ -45,6 +46,7 @@ class BenchmarkQuestion:
     question: str
     answerable: bool
     relevant_pages: frozenset[Page]
+    expected_answer: str | None = None
 
 
 @dataclass(frozen=True)
@@ -79,6 +81,12 @@ def _parse_question(raw: object, papers_dir: Path) -> BenchmarkQuestion:
     if not isinstance(answerable, bool):
         raise BenchmarkError(
             f"Question '{question_id}': 'answerable' must be true or false."
+        )
+
+    expected_answer = raw.get("expected_answer")
+    if expected_answer is not None and not isinstance(expected_answer, str):
+        raise BenchmarkError(
+            f"Question '{question_id}': 'expected_answer' must be text."
         )
 
     relevant = raw.get("relevant") or []
@@ -121,7 +129,13 @@ def _parse_question(raw: object, papers_dir: Path) -> BenchmarkQuestion:
                 )
             pages.add((paper, page))
 
-    return BenchmarkQuestion(question_id, text.strip(), True, frozenset(pages))
+    return BenchmarkQuestion(
+        question_id,
+        text.strip(),
+        True,
+        frozenset(pages),
+        expected_answer.strip() if expected_answer else None,
+    )
 
 
 def load_benchmark(questions_path: Path, papers_dir: Path) -> Benchmark:

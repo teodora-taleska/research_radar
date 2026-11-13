@@ -117,3 +117,28 @@ Limitations of the method:
 - With one relevant page per question, Precision@K cannot exceed 1/K.
 - Results depend on the size and difficulty of the benchmark.
 - MRR and nDCG are not reported yet.
+
+## 6. Language model comparison
+
+Language models are compared on the same benchmark with identical retrieved
+passages, so only the generator differs. For each model the evaluation
+records latency, whether it answered or declined, and whether its citations
+point to labelled relevant pages (see `docs/experiments.md` for the metric
+definitions).
+
+Faithfulness cannot be computed reliably by simple text matching, so it is
+scored by a person on a 1 to 5 scale (5: every claim supported by the cited
+text; 1: wrong or contradicted), comparing each answer with the cited passage
+and the recorded expected answer. This is a subjective judgement by one
+scorer on a small sample.
+
+Limitations:
+
+- The automatic citation checks only verify that a cited page is a labelled
+  one, not that the claim is correct.
+- Correct refusal is measured on only 4 unanswerable questions, so one
+  different answer changes the rate by 25 percentage points.
+- Latency depends on the hardware and on whether the model was already
+  loaded. Models are loaded before timing starts.
+- Results apply to the prompt, the top-5 retrieval and the sampling
+  temperature (0.1) used here.

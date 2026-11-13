@@ -12,7 +12,9 @@ import argparse
 import json
 import tempfile
 import time
-from collections.abc import Callable, Sequence
+from collections.abc import Callable, Iterator, Sequence
+from contextlib import contextmanager
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 
@@ -150,6 +152,47 @@ def evaluate_retrieval(
     }
 
 
+@dataclass(frozen=True)
+class IndexedBenchmark:
+    """A temporary vector store holding the indexed benchmark papers."""
+
+    store: ChromaDocumentStore
+    page_counts: dict[str, int]
+    total_chunks: int
+
+
+@contextmanager
+def indexed_benchmark(
+    benchmark: Benchmark,
+    embedder: OllamaEmbeddingProvider,
+    chunk_size: int,
+    chunk_overlap: int,
+) -> Iterator[IndexedBenchmark]:
+    """Index the benchmark papers into a temporary store.
+
+    The store and its database are deleted when the block ends, so the
+    user's own uploaded documents are never touched.
+
+    Raises:
+        BenchmarkError: If a labelled page does not exist in its paper.
+    """
+    with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as work_dir:
+        work = Path(work_dir)
+        store = ChromaDocumentStore(persist_directory=work / "chroma")
+        engine = create_db_engine(f"sqlite:///{(work / 'eval.db').as_posix()}")
+        try:
+            service = DocumentService(
+                embedder, store, DocumentRepository(create_session_factory(engine))
+            )
+            page_counts, total_chunks = build_index(
+                benchmark, service, chunk_size, chunk_overlap
+            )
+            validate_page_labels(benchmark, page_counts)
+            yield IndexedBenchmark(store, page_counts, total_chunks)
+        finally:
+            engine.dispose()
+
+
 def _print_report(report: dict, output_path: Path) -> None:
     summary = report["summary"]
     print("\nRetrieval results")
@@ -196,35 +239,23 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     embedder = OllamaEmbeddingProvider()
 
-    with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as work_dir:
-        work = Path(work_dir)
-        store = ChromaDocumentStore(persist_directory=work / "chroma")
-        engine = create_db_engine(f"sqlite:///{(work / 'eval.db').as_posix()}")
-        service = DocumentService(
-            embedder, store, DocumentRepository(create_session_factory(engine))
-        )
+    print(f"Indexing {len(benchmark.paper_files())} papers...")
+    try:
+        with indexed_benchmark(
+            benchmark, embedder, args.chunk_size, args.chunk_overlap
+        ) as indexed:
+            retriever = Retriever(embedder, indexed.store)
+            embedder.embed_text("warm-up")  # exclude model loading from latency
 
-        print(f"Indexing {len(benchmark.paper_files())} papers...")
-        try:
-            page_counts, total_chunks = build_index(
-                benchmark, service, args.chunk_size, args.chunk_overlap
+            print(f"Evaluating {len(benchmark.answerable_questions)} questions...")
+            report = evaluate_retrieval(
+                benchmark,
+                lambda question, top_k: retriever.retrieve(question, top_k=top_k),
+                ks=args.ks,
             )
-            validate_page_labels(benchmark, page_counts)
-        except BenchmarkError as exc:
-            print(f"Benchmark error: {exc}")
-            engine.dispose()
-            return 1
-
-        retriever = Retriever(embedder, store)
-        embedder.embed_text("warm-up")  # exclude model loading from latency
-
-        print(f"Evaluating {len(benchmark.answerable_questions)} questions...")
-        report = evaluate_retrieval(
-            benchmark,
-            lambda question, top_k: retriever.retrieve(question, top_k=top_k),
-            ks=args.ks,
-        )
-        engine.dispose()
+    except BenchmarkError as exc:
+        print(f"Benchmark error: {exc}")
+        return 1
 
     now = datetime.now()
     report = {
@@ -236,8 +267,8 @@ def main(argv: Sequence[str] | None = None) -> int:
             "chunk_size": args.chunk_size,
             "chunk_overlap": args.chunk_overlap,
             "ks": sorted(set(args.ks)),
-            "papers": sorted(page_counts),
-            "indexed_chunks": total_chunks,
+            "papers": sorted(indexed.page_counts),
+            "indexed_chunks": indexed.total_chunks,
             "questions_evaluated": len(benchmark.answerable_questions),
             "questions_unanswerable": len(benchmark.questions)
             - len(benchmark.answerable_questions),

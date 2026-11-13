@@ -42,6 +42,7 @@ All settings are environment variables with defaults.
 | `CHROMA_PERSIST_DIR` | `./data/chroma` | Vector database folder |
 | `DATABASE_URL` | `sqlite:///./data/research_radar.db` | Metadata database |
 | `RESEARCH_RADAR_API_URL` | `http://127.0.0.1:8000` | Backend address used by the frontend |
+| `RESEARCH_RADAR_RESULTS_DIR` | `./evaluation/results` | Folder the Evaluation page reads reports from |
 
 Changing the embedding model requires re-uploading all documents, because
 vectors from different models are not comparable.

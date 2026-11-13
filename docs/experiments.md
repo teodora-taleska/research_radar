@@ -60,6 +60,97 @@ also strict (a page that only partly answers the question does not count).
 Questions were written and labelled by the same author who built the system,
 which can bias them towards easy phrasing.
 
-Not yet measured: answer quality, citation faithfulness and refusal on the 4
-unanswerable questions (planned LLM comparison), and other chunk sizes or
-embedding models.
+Not yet measured here: other chunk sizes or embedding models. Answer quality
+is covered by the LLM comparison below.
+
+## LLM comparison
+
+Compares language models on the same benchmark. Every question (22
+answerable, 4 unanswerable) is answered with each model, using the same
+retrieved top-5 passages, so differences come from the model alone.
+
+Both models must be installed in Ollama (`ollama pull qwen3:4b` and
+`ollama pull qwen3:4b-instruct`). Run:
+
+```powershell
+python -m evaluation.experiments.llm_comparison
+```
+
+Options: `--models A B`, `--top-k 5`, `--chunk-size`, `--chunk-overlap`. Each
+model is loaded before its questions, so loading time is not counted. The
+report is saved as `evaluation/results/llm_comparison_<timestamp>.json`.
+
+Measured automatically:
+
+| Metric | Meaning |
+|---|---|
+| Answered (answerable) | Share of answerable questions that received a cited answer |
+| Correct refusals | Share of unanswerable questions where the model declined |
+| Citation on relevant page | Share of answers with at least one citation to a labelled relevant page |
+| Citation precision | Share of all citations that point to a labelled relevant page |
+| Latency | Seconds per answer: mean, median and 95th percentile |
+
+"Refused" means the answer was reported as insufficient evidence. That also
+covers answers rejected because they cited no retrieved passage.
+
+Measured by hand: **faithfulness**, a score from 1 to 5 of whether every claim
+in an answer is supported by the cited text and matches the expected answer
+(scoring guide on the Evaluation page). Scores are entered on the Evaluation
+page, saved as `evaluation/results/faithfulness_<timestamp>.json`, and
+averaged per model in the summary table.
+
+The report also records the distance of the best retrieved passage for
+answerable and unanswerable questions. If unanswerable questions are clearly
+farther away, a distance cut-off could refuse them before the model is asked.
+
+### Results (13 November 2026)
+
+Raw results: `evaluation/results/llm_comparison_20261113_171829.json`. Same 3
+papers, 26 questions (22 answerable, 4 unanswerable), top-5 passages,
+temperature 0.1.
+
+| | qwen3:4b | qwen3:4b-instruct |
+|---|---:|---:|
+| Answered (answerable) | 95% (21/22) | 95% (21/22) |
+| Correct refusals | 100% (4/4) | 100% (4/4) |
+| Citation on relevant page | 100% | 100% |
+| Citation precision | 0.94 | 0.94 |
+| Median answer time | 22.2 s | 2.4 s |
+| 95th percentile answer time | 81.6 s | 3.7 s |
+
+Findings:
+
+- **Speed:** the instruct model is about 9 times faster at the median and
+  more than 20 times faster at the 95th percentile. `qwen3:4b` is a thinking
+  model that writes long reasoning before answering. The `qwen3:4b` run
+  shared the machine with other work, but the gap is far larger than that
+  could explain.
+- **Automatic metrics are equal.** Each model declined one answerable
+  question: `qwen3:4b` q16 (participant numbers) after 88 s, the instruct
+  model q20 (best method for alpha and beta bands).
+- **Citation checks cannot detect wrong claims.** On q20 `qwen3:4b` answered
+  that OBS was best, citing a labelled relevant page, but the paper reports
+  CWL as best; it also gave wrong expansions of the acronyms. This counts as
+  a correct, well-cited answer in every automatic metric. Faithfulness has to
+  be judged by a person (not yet scored for this run).
+- **Retrieval distance does not separate unanswerable questions.** The best
+  passage had a median distance of 0.42 for answerable questions (range
+  0.28 to 0.66) and 0.47 for unanswerable ones (range 0.33 to 0.81). Only the
+  off-topic football question was clearly far (0.81). Unanswerable questions
+  about the same topic (q24, q25) retrieved passages as close as answerable
+  ones, so a distance cut-off would not replace the model's refusal.
+
+Caveats: 4 unanswerable questions, 22 answerable questions, one run per
+model, one machine. Differences of one question are not meaningful.
+
+## Evaluation page
+
+The Evaluation page (`streamlit run frontend/Home.py`, then Evaluation) reads
+the reports from `evaluation/results/` (override with
+`RESEARCH_RADAR_RESULTS_DIR`). It shows, for the retrieval runs: Precision@K,
+Recall@K and latency for a chosen K, a chart by K, results per question,
+failure cases with the retrieved pages and distances, and a comparison table
+when several runs exist (for example different chunk sizes). For the LLM
+comparison it shows the summary table, speed and behaviour charts, the
+distance analysis, and the answers of all models side by side with the
+expected answer and a faithfulness score selector.
