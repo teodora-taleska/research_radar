@@ -27,6 +27,54 @@ page as proof, without reading every paper in full. What **Index papers** does,
 which questions work well and how to read the citations:
 [docs/use_case.md](docs/use_case.md).
 
+## A tour of the app
+
+### Home page
+
+![Home page of Research Radar](docs/images/home-page.png)
+
+The home page explains the three steps: open **Research Assistant**, upload
+PDFs and click **Index papers**, then ask a question and check the cited
+passages. The sidebar lists the pages. **Research Assistant** and
+**Evaluation** work in version 1; **Paper Explorer** and **Paper Comparison**
+are planned for version 2.
+
+### Ask a question and check the evidence
+
+![A question answered with numbered citations](docs/images/research-assistant-answer.png)
+
+The example paper is a 16-page encyclopedia chapter on ECG signal processing
+(Sörnmo and Laguna, *Wiley Encyclopedia of Biomedical Engineering*, 2006),
+indexed into 79 passages. The PDF is not part of this repository.
+
+**Sidebar**
+- **Upload PDFs** and **Index papers** add a paper to the search.
+- **Uploaded** lists your papers. The tick decides whether a question searches
+  that paper, the `?` shows its pages and passages, and the bin deletes it.
+- **Passages to retrieve** sets how many passages the model sees (5 by default).
+- **Clear conversation** empties the chat.
+
+**Chat**
+- Your question, then the answer. The numbers `[1]` and `[2]` in the answer
+  match the numbered sources underneath it.
+
+![An opened citation showing the original text](docs/images/citation-original-text.png)
+
+Opening a source shows the **original passage** from the paper, with its page
+and its **distance** to your question (0.314 here; lower means closer). This
+is how you check a claim against the text instead of trusting the answer.
+
+### When the papers do not contain the answer
+
+![The not-enough-evidence reply](docs/images/not-enough-evidence.png)
+
+This chapter is from 2006, so a question about the best deep learning model on
+the PTB-XL dataset cannot be answered from it. The app says so (yellow box)
+instead of inventing something, and **All retrieved passages** shows what it
+searched. This is built in twice: the model is told to answer only from the
+retrieved passages, and the code replaces any answer without a valid citation
+with this message.
+
 ## How it works
 
 ![Data flows](docs/images/data-flows.svg)
@@ -87,6 +135,17 @@ automatic scores. The automatic checks cannot tell whether a cited claim is
 true: the slower model once gave a wrong answer while citing a correct page,
 which is why faithfulness is also scored by hand. The benchmark is small, so
 treat the numbers as indicative.
+
+![Median answer time and answering behaviour of the two models](docs/images/model-comparison.png)
+
+The Evaluation page shows the comparison (left: median seconds per answer;
+right: how often each model answers, refuses correctly and cites a relevant
+page). The two bars are equal on the right, but `qwen3:4b` takes about 22 s per
+answer and `qwen3:4b-instruct` about 2.4 s. The reason is that `qwen3:4b` is a
+*thinking* model: it writes a long chain of reasoning before the answer (the
+app hides it), so it generates many more words each time. The instruct variant
+answers directly. With equal automatic scores, and the one clearly wrong answer
+coming from the slower model, the faster instruct model is the default.
 
 ## Quick start
 
